@@ -2,14 +2,14 @@
 
 namespace App\Observers;
 
+use App\Events\FeedbackTelegramNotificationEvent;
 use App\Models\Feedback;
-use App\Notifications\FeedbackTelegramNotification;
 
 class FeedbackObserver
 {
-    public function created(Feedback $feedback): FeedbackTelegramNotification
+    public function created(Feedback $feedback)
     {
-        return new FeedbackTelegramNotification($feedback);
+        return event(new FeedbackTelegramNotificationEvent($feedback));
     }
 
 }

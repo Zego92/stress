@@ -175,7 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        NotificationChannels\Telegram\TelegramServiceProvider::class
+        Telegram\Bot\Laravel\TelegramServiceProvider::class
 
     ],
 

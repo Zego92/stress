@@ -3,11 +3,15 @@
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\FeedbackController;
+use App\Http\Controllers\Admin\FeedbackPageController;
 use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\MainHeaderController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\PostGalleryController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -47,11 +51,15 @@ Route::prefix('/admin')->as('admin.')->namespace('Admin')->group(function(){
 // Admins with Authentication
 Route::prefix('/admin')->as('admin.')->middleware('auth:admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::resource('banners', BannerController::class)->except(['edit', 'create']);
+    Route::resource('categories', CategoryController::class)->except(['edit', 'create']);
+    Route::resource('contacts', ContactController::class)->except(['edit', 'create']);
+    Route::resource('feedbacks', FeedbackController::class)->except(['create, edit']);
+    Route::resource('static/page/feedback', FeedbackPageController::class)->except(['create', 'edit']);
+    Route::resource('main/footer', FooterController::class)->except(['edit', 'create']);
     Route::resource('languages', LanguageController::class)->except(['edit', 'create']);
     Route::resource('main/header', MainHeaderController::class)->except(['edit', 'create']);
-    Route::resource('main/footer', FooterController::class)->except(['edit', 'create']);
-    Route::resource('categories', CategoryController::class)->except(['edit', 'create']);
-    Route::resource('banners', BannerController::class)->except(['edit', 'create']);
     Route::resource('posts', PostController::class)->except(['edit', 'create']);
     Route::resource('posts/gallery', PostGalleryController::class)->except(['index', 'edit', 'create', 'show']);
+    Route::resource('users', UserController::class)->except(['edit', 'create']);
 });

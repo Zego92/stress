@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\FeedbackTelegramNotificationEvent;
+use App\Listeners\FeedbackTelegramNotificationListener;
 use App\Models\Feedback;
 use App\Observers\FeedbackObserver;
 use Illuminate\Auth\Events\Registered;
@@ -20,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        FeedbackTelegramNotificationEvent::class => [
+            FeedbackTelegramNotificationListener::class
+        ]
     ];
 
     /**

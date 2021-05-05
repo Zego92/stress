@@ -99,6 +99,12 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'feedbackTelegramNotification' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/telegram-feedback-notification.log'),
+            'level' => 'debug',
+        ],
     ],
 
 ];
