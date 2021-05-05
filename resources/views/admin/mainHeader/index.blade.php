@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Языки')
+@section('title', 'Шапка главной страницы')
 
 @push('css')
 
@@ -13,14 +13,14 @@
                 <div class="col-md-8 mt-4">
                     <div class="card">
                         <div class="card-header border-transparent">
-                            <h3 class="card-title">Языки</h3>
+                            <h3 class="card-title">Шапка главной страницы</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool text-white" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
                                 <button type="button" class="btn btn-tool text-white" data-toggle="modal"
-                                        data-target="#languageModal">
+                                        data-target="#mainHeaderModal">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -31,24 +31,32 @@
                                     <thead>
                                     <tr>
                                         <th scope="col">ID</th>
-                                        <th scope="col">Имя</th>
+                                        <th scope="col">Логотип</th>
+                                        <th scope="col">Главная <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
+                                        <th scope="col">Наши Работы <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
+                                        <th scope="col">Контакты <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
+                                        <th scope="col">Калькулятор <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
                                         <th scope="col">Действие</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($languages as $key => $language)
+                                    @foreach($headers as $key => $header)
                                         <tr>
                                             <td>{{ $key +1 }}</td>
-                                            <td>{{ $language->code }}</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
                                             <td>
                                                 <div class="btn-toolbar" role="toolbar"
                                                      aria-label="Toolbar with button groups">
                                                     <div class="btn-group mr-2" role="group" aria-label="First group">
                                                         <a class="btn btn-outline-primary mr-2"
-                                                           href="{{ route('admin.languages.show', $language) }}"><i
-                                                                class="fas fa-info-circle"></i></a>
+                                                           href="{{ route('admin.header.show', $header) }}"><i
+                                                                class="fas fa-info-circle text-white"></i></a>
                                                         <form method="POST"
-                                                              action="{{ route('admin.languages.destroy', $language) }}">
+                                                              action="{{ route('admin.header.destroy', $header) }}">
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE">
                                                             <button type="submit" class="btn btn-outline-danger">
@@ -70,8 +78,9 @@
             </div>
         </div>
     </section>
+
     <!-- Modal -->
-    <div class="modal fade" id="languageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="mainHeaderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -104,17 +113,8 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @push('js')
-    <script>
-        toastr.options.closeButton = true;
-        @if(session('success'))
-            toastr.success( "{{session()->get('success')}}", {timeOut: 2000})
-        @elseif(session('error'))
-            toastr.error( "{{session()->get('error')}}", {timeOut: 2000})
-        @endif
-    </script>
 
 @endpush

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\MainHeaderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -19,13 +20,14 @@ use App\Http\Controllers\Admin\HomeController as AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::view('/', 'welcome')->name('home');
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+//Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 /* Routes for Administrative Management */
 // Admins without Authentication
@@ -41,5 +43,6 @@ Route::prefix('/admin')->as('admin.')->namespace('Admin')->group(function(){
 Route::prefix('/admin')->as('admin.')->middleware('auth:admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('languages', LanguageController::class);
+    Route::resource('main/header', MainHeaderController::class);
 
 });

@@ -21,7 +21,7 @@ class LanguageController extends Controller
         Language::create([
             'code' => $request->code
         ]);
-        return back()->with('success', 'Новый язык успешно добавлен');
+        return redirect()->back()->with('success', 'Данные успешно добавлены');
     }
 
     public function show(Language $language)
@@ -34,8 +34,13 @@ class LanguageController extends Controller
         //
     }
 
-    public function destroy(Language $language)
+    public function destroy(Language $language): RedirectResponse
     {
-        //
+        try {
+            $language->delete();
+            return back()->with('success', 'Данные успешно удалены');
+        }catch (\Exception $exception){
+            return back()->with('error', $exception->getMessage());
+        }
     }
 }
