@@ -1,8 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\RegisterController;
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\MainHeaderController;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\PostGalleryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -42,7 +47,11 @@ Route::prefix('/admin')->as('admin.')->namespace('Admin')->group(function(){
 // Admins with Authentication
 Route::prefix('/admin')->as('admin.')->middleware('auth:admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('index');
-    Route::resource('languages', LanguageController::class);
-    Route::resource('main/header', MainHeaderController::class);
-
+    Route::resource('languages', LanguageController::class)->except(['edit', 'create']);
+    Route::resource('main/header', MainHeaderController::class)->except(['edit', 'create']);
+    Route::resource('main/footer', FooterController::class)->except(['edit', 'create']);
+    Route::resource('categories', CategoryController::class)->except(['edit', 'create']);
+    Route::resource('banners', BannerController::class)->except(['edit', 'create']);
+    Route::resource('posts', PostController::class)->except(['edit', 'create']);
+    Route::resource('posts/gallery', PostGalleryController::class)->except(['index', 'edit', 'create', 'show']);
 });

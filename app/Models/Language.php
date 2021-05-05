@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Language extends Model
@@ -19,5 +20,25 @@ class Language extends Model
     public function mainHeader(): HasOne
     {
         return $this->hasOne(MainHeader::class);
+    }
+
+    public function banner(): HasOne
+    {
+        return $this->hasOne(Banner::class);
+    }
+
+    public function categories(): HasMany
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    public function footer(): HasOne
+    {
+        return $this->hasOne(Footer::class);
+    }
+
+    public function feedbackPage(): HasOne
+    {
+        return $this->hasOne(FeedbackPage::class);
     }
 }

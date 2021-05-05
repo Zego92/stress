@@ -6,16 +6,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Banner extends Model
+class Contact extends Model
 {
     use HasFactory;
 
-    protected $table = 'banners';
+    protected $table = 'contacts';
 
     protected $fillable = [
         'language_id',
-        'image',
-        'title',
+        'firstPhone',
+        'secondPhone',
+        'thirdPhone',
+        'address',
+        'startTimeWork',
+        'endTimeWork',
+        'email',
+        'gMapLink',
     ];
 
     public function language(): BelongsTo
