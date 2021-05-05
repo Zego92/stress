@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateMainHeadersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('main_headers', function (Blueprint $table) {
@@ -27,15 +22,14 @@ class CreateMainHeadersTable extends Migration
             $table->string('feedbackTitle');
             $table->string('feedbackLink')->default('feedback');
             $table->timestamps();
-            $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('language_id')
+                ->references('id')
+                ->on('languages')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('main_headers');
