@@ -14,7 +14,11 @@ class CreateBannersTable extends Migration
             $table->text('image');
             $table->string('title');
             $table->timestamps();
-            $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('language_id')
+                ->references('id')
+                ->on('languages')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
