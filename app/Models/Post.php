@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\UploadImage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,7 +11,7 @@ use Illuminate\Support\Str;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, UploadImage;
 
     protected $table = 'posts';
 
@@ -40,6 +41,11 @@ class Post extends Model
 
     public function setSlugAttribute(): string
     {
-        return $this->attributes['slug'] = Str::slug($this->name);
+        return $this->attributes['slug'] = Str::slug($this->title);
+    }
+
+    public function setImageAttribute($value): string
+    {
+        return $this->uploadImage('image', $value);
     }
 }
