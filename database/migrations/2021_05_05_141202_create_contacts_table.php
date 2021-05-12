@@ -11,14 +11,14 @@ class CreateContactsTable extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('language_id');
-            $table->string('firstPhone')->unique();
-            $table->string('secondPhone')->unique();
-            $table->string('thirdPhone')->unique();
+            $table->string('firstPhone');
+            $table->string('secondPhone');
+            $table->string('thirdPhone');
             $table->string('address');
             $table->timestamp('startTimeWork');
             $table->timestamp('endTimeWork');
-            $table->string('email')->unique();
-            $table->string('gMapLink');
+            $table->string('email');
+            $table->text('gMapLink');
             $table->timestamps();
             $table->foreign('language_id')
                 ->references('id')

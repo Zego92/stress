@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 
 class Category extends Model
 {
-    use HasFactory, UploadImage;
+    use HasFactory;
 
     protected $table = 'categories';
 
@@ -37,8 +37,8 @@ class Category extends Model
         return $this->hasMany(Post::class);
     }
 
-    public function setImageAttribute($value): string
-    {
-        return $this->uploadImage('image', $value);
-    }
+//    public function setImageAttribute($value): string
+//    {
+//        return $this->uploadImage('image', $value);
+//    }
 }

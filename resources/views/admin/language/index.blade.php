@@ -82,6 +82,7 @@
                     </button>
                 </div>
                 <form method="post" action="{{ route('admin.languages.store') }}">
+                    @csrf
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="code">Введите код языка</label>
@@ -94,11 +95,17 @@
                             @enderror
                         </div>
                     </div>
-                    @csrf
-
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Закрыть</button>
-                        <button type="submit" class="btn btn-outline-success">Добавить</button>
+                        <div class="row w-100">
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-outline-danger btn-block" data-dismiss="modal">Закрыть</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-outline-success btn-block">Добавить</button>
+                            </div>
+                        </div>
+
+
                     </div>
                 </form>
             </div>

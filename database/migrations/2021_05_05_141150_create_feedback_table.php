@@ -15,6 +15,7 @@ class CreateFeedbackTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('title');
+            $table->integer('status')->default(1)->comment('1 - Получен: 2 - В обработке: 3 - Обработан:');
             $table->text('description');
             $table->timestamps();
             $table->foreign('user_id')

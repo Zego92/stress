@@ -18,18 +18,26 @@
                 data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="{{ route('admin.languages.index') }}" class="nav-link">
+                    <a href="{{ route('admin.languages.index') }}" class="nav-link @if(request()->is('admin/languages')) active @endif">
                         <i class="fas fa-globe"></i>
-                        <p>
+                        <p class="ml-2">
                             Языки
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.header.index') }}" class="nav-link">
+                    <a href="{{ route('admin.header.index') }}" class="nav-link @if(request()->is('admin/header')) is-invalid @endif">
                         <i class="fas fa-desktop"></i>
-                        <p>
+                        <p class="ml-2">
                             Шапка сайта
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.banners.index') }}" class="nav-link @if(request()->is('admin/banners')) is-invalid @endif">
+                        <i class="fas fa-image"></i>
+                        <p class="ml-2">
+                            Баннеры
                         </p>
                     </a>
                 </li>

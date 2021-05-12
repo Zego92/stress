@@ -6,25 +6,20 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class MainHeaderUpdateRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
         return false;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'language_id' => 'nullable|sometimes|string|max:50',
+            'brandLogoImage' => 'nullable|sometimes|',
+            'homeTitle' => 'nullable|sometimes|string|max:50',
+            'ourProjectsTitle' => 'nullable|sometimes|string|max:50',
+            'contactTitle' => 'nullable|sometimes|string|max:50',
+            'feedbackTitle' => 'nullable|sometimes|string|max:50',
         ];
     }
 }

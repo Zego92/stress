@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Events\FeedbackTelegramNotificationEvent;
 use App\Listeners\FeedbackTelegramNotificationListener;
 use App\Models\Feedback;
+use App\Models\MainHeader;
+use App\Observers\Admin\MainHeaderObserver;
 use App\Observers\FeedbackObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -35,5 +37,6 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Feedback::observe(FeedbackObserver::class);
+        MainHeader::observe(MainHeaderObserver::class);
     }
 }

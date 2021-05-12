@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\Language;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CategorySeeder extends Seeder
 {
@@ -40,6 +42,7 @@ class CategorySeeder extends Seeder
             Category::create([
                 'language_id' => Language::where('code', '=', 'ru')->first()->id,
                 'name' => $name,
+                'slug' => Str::slug($name),
                 'image' => 'test.png',
             ]);
         }
@@ -47,6 +50,7 @@ class CategorySeeder extends Seeder
             Category::create([
                 'language_id' => Language::where('code', '=', 'en')->first()->id,
                 'name' => $name,
+                'slug' => Str::slug($name),
                 'image' => 'test.png',
             ]);
         }
@@ -54,6 +58,7 @@ class CategorySeeder extends Seeder
             Category::create([
                 'language_id' => Language::where('code', '=', 'ua')->first()->id,
                 'name' => $name,
+                'slug' => Str::slug($name),
                 'image' => 'test.png',
             ]);
         }
