@@ -10,6 +10,7 @@ use App\Models\MainHeader;
 use App\Traits\UploadImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class MainHeaderController extends Controller
 {
@@ -43,9 +44,9 @@ class MainHeaderController extends Controller
             ->with('languages', $languages);
     }
 
-//    public function update(MainHeaderUpdateRequest $request, MainHeader $mainHeader): RedirectResponse
-    public function update(Request $request, MainHeader $header): RedirectResponse
+    public function update(MainHeaderUpdateRequest $request, MainHeader $header): RedirectResponse
     {
+        File::delete($header->brandLogoImage);
         $header->update([
             'language_id' => $request->language_id,
             'brandLogoImage' => $request->file('brandLogoImage'),

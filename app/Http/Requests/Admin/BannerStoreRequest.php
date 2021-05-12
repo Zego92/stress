@@ -14,7 +14,9 @@ class BannerStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'language_id' => 'required',
+            'image' => 'required',
+            'title' => 'required',
         ];
     }
 }

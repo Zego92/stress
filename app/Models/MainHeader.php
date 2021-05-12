@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\File;
 use function PHPUnit\Framework\at;
 
 class MainHeader extends Model
@@ -39,4 +40,13 @@ class MainHeader extends Model
     {
        return $this->uploadImage('brandLogoImage', $value);
     }
+
+//    protected static function booting()
+//    {
+//        static::updating(function ($model) {
+//            File::delete($model->brandLogoImage);
+//        });
+//    }
+
+
 }

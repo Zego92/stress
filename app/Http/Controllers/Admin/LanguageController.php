@@ -29,10 +29,6 @@ class LanguageController extends Controller
         return view('admin.language.show', compact('language'));
     }
 
-    public function update(Request $request, Language $language)
-    {
-        //
-    }
 
     public function destroy(Language $language): RedirectResponse
     {

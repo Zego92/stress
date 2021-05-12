@@ -10,7 +10,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row justify-content-center align-items-center">
-                <div class="col-md-8 mt-4">
+                <div class="col-md-9 mt-4">
                     <div class="card">
                         <div class="card-header border-transparent">
                             <h3 class="card-title">Языки</h3>
@@ -30,9 +30,9 @@
                                 <table class="table m-0">
                                     <thead>
                                     <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Имя</th>
-                                        <th scope="col">Действие</th>
+                                        <th style="width: 33%;">ID</th>
+                                        <th style="width: 33%;">Язык</th>
+                                        <th style="width: 33%;">Действие</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -104,8 +104,6 @@
                                 <button type="submit" class="btn btn-outline-success btn-block">Добавить</button>
                             </div>
                         </div>
-
-
                     </div>
                 </form>
             </div>

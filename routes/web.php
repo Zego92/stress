@@ -55,7 +55,7 @@ Route::prefix('/admin')->as('admin.')->middleware('auth:admin')->group(function(
     Route::resource('categories', CategoryController::class)->except(['edit', 'create']);
     Route::resource('contacts', ContactController::class)->except(['edit', 'create']);
     Route::resource('feedbacks', FeedbackController::class)->except(['create, edit']);
-    Route::resource('static/page/feedback', FeedbackPageController::class)->except(['create', 'edit']);
+    Route::resource('static/page-feedback', FeedbackPageController::class)->except(['create', 'edit']);
     Route::resource('static/main/footer', FooterController::class)->except(['edit', 'create']);
     Route::resource('languages', LanguageController::class)->except(['edit', 'create']);
     Route::resource('static/main/header', MainHeaderController::class)->except(['edit', 'create']);

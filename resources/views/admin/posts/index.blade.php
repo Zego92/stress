@@ -1,6 +1,6 @@
-@extends('')
+@extends('layouts.admin')
 
-@section('title', '')
+@section('title', 'Наши работы')
 
 @push('css')
 
