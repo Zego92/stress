@@ -20,7 +20,7 @@
                             <h3 class="card-title">Изменение данных</h3>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.header.update', $header) }}" method="post">
+                            <form action="{{ route('admin.header.update', $header) }}" method="post" enctype="multipart/form-data">
                                 @method('PATCH')
                                 @csrf
                                 <div class="form-group">

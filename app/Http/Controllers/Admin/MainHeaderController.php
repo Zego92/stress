@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\MainHeaderStoreRequest;
 use App\Http\Requests\Admin\MainHeaderUpdateRequest;
 use App\Models\Language;
 use App\Models\MainHeader;
+use App\Traits\UploadImage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -43,9 +44,9 @@ class MainHeaderController extends Controller
     }
 
 //    public function update(MainHeaderUpdateRequest $request, MainHeader $mainHeader): RedirectResponse
-    public function update(Request $request, MainHeader $mainHeader): RedirectResponse
+    public function update(Request $request, MainHeader $header): RedirectResponse
     {
-        $mainHeader->update([
+        $header->update([
             'language_id' => $request->language_id,
             'brandLogoImage' => $request->file('brandLogoImage'),
             'homeTitle' => $request->homeTitle,

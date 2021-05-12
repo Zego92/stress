@@ -16,10 +16,6 @@ class MainHeader extends Model
 
     protected $table = 'main_headers';
 
-    protected $attributes = [
-        'brandLogoImage'
-    ];
-
     protected $fillable = [
         'language_id',
         'brandLogoImage',
@@ -41,6 +37,6 @@ class MainHeader extends Model
 
     public function setBrandLogoImageAttribute($value): string
     {
-        return $this->uploadImage('brandLogoImage', $value);
+       return $this->uploadImage('brandLogoImage', $value);
     }
 }

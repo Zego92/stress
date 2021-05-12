@@ -14,7 +14,7 @@ class MainHeaderObserver
 
     public function updated(MainHeader $mainHeader)
     {
-        File::delete($mainHeader->brandLogoImage);
+//        File::delete($mainHeader->brandLogoImage);
     }
 
     public function deleted(MainHeader $mainHeader)

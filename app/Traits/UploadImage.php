@@ -10,6 +10,14 @@ trait UploadImage
 {
     protected function uploadImage(string $attr, $value): string
     {
+        $uploadDir = public_path('uploads/');
+        $imageDir = public_path('uploads/image/');
+        if (!file_exists($uploadDir)){
+            mkdir($uploadDir);
+        }
+        if (!file_exists($imageDir)){
+            mkdir($imageDir);
+        }
         if (!file_exists(public_path("uploads/image/$this->table/"))){
             mkdir(public_path("uploads/image/$this->table/"));
         }
