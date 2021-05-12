@@ -20,9 +20,6 @@ $('.deleteHeader').on('click', function (e) {
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
-            swalWithBootstrapButtons.fire(
-                'Данные успешно удалены!'
-            )
             setTimeout(() => {
                 $('.deleteHeaderForm').submit()
             }, 1000)
