@@ -13,12 +13,12 @@ class PostGalleryController extends Controller
         //
     }
 
-    public function update(Request $request, PostGallery $postGallery)
+    public function update(Request $request, PostGallery $gallery)
     {
         //
     }
 
-    public function destroy(PostGallery $postGallery)
+    public function destroy(PostGallery $gallery)
     {
         //
     }

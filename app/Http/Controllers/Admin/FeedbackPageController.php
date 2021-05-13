@@ -23,17 +23,17 @@ class FeedbackPageController extends Controller
         //
     }
 
-    public function show(FeedbackPage $feedbackPage)
+    public function show(FeedbackPage $page_feedback)
     {
         //
     }
 
-    public function update(Request $request, FeedbackPage $feedbackPage)
+    public function update(Request $request, FeedbackPage $page_feedback)
     {
         //
     }
 
-    public function destroy(FeedbackPage $feedbackPage)
+    public function destroy(FeedbackPage $page_feedback)
     {
         //
     }

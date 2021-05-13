@@ -14,7 +14,7 @@ class MainHeaderStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'language_id' => 'required|string|max:50',
+            'language_id' => 'required|string|max:50|unique:main_headers',
             'brandLogoImage' => 'required',
             'homeTitle' => 'required|string|max:50',
             'ourProjectsTitle' => 'required|string|max:50',
