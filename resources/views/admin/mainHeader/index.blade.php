@@ -14,7 +14,6 @@
                     <div class="card">
                         <div class="card-header border-transparent">
                             <h3 class="card-title">Шапка главной страницы</h3>
-
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool text-white" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -73,6 +72,9 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                        <div class="card-footer">
+                            {{ $headers->links('tailwind') }}
                         </div>
                         <div class="card-footer clearfix" style="display: block;"></div>
                     </div>

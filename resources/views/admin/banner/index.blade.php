@@ -8,17 +8,12 @@
 
 @section('content')
     <section class="content">
-
         <div class="container-fluid">
-
             <div class="row justify-content-center align-items-center">
-
                 <div class="col-md-10 mt-4">
-
                     <div class="card">
                         <div class="card-header border-transparent">
                             <h3 class="card-title">Баннеры</h3>
-
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool text-white" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -29,7 +24,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="card-body p-0" style="display: block;">
+                        <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table class="table m-0">
                                     <thead>
@@ -71,6 +66,9 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                        <div class="card-footer">
+                            {{ $banners->links('tailwind') }}
                         </div>
                         <div class="card-footer clearfix" style="display: block;"></div>
                     </div>
@@ -120,7 +118,7 @@
                         </div>
                         <div class="form-group">
                             <label for="title">Название</label>
-                            <input type="text" class="form-control @error('homeTitle') is-invalid @enderror" id="title"
+                            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
                                    name="title" value="{{ old('title') }}">
                             @error('title')
                             <span class="invalid-feedback" role="alert">

@@ -16,7 +16,7 @@ class MainHeaderController extends Controller
 {
     public function index()
     {
-        $headers = MainHeader::with('language')->paginate(20);
+        $headers = MainHeader::with('language')->paginate(10);
         $languages = Language::all();
         return view('admin.mainHeader.index')
             ->with('headers', $headers)

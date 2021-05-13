@@ -8,20 +8,16 @@
 
 @section('content')
     <section class="content">
-
         <div class="container-fluid">
-
             <div class="row justify-content-center align-items-center">
-
                 <div class="col-md-12 mt-4">
-
                     <div class="card">
                         <div class="card-header border-transparent">
                             <h3 class="card-title">Изменение данных</h3>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('admin.header.update', $header) }}" method="post" enctype="multipart/form-data">
-                                @method('PATCH')
+                                @method('PUT')
                                 @csrf
                                 <div class="form-group">
                                     <label for="homeTitle">Язык</label>
@@ -34,8 +30,8 @@
                                     </select>
                                     @error('language_id')
                                     <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
                                 <div class="form-group">

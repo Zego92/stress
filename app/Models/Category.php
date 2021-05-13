@@ -9,9 +9,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
+/**
+ * @method static create(array $array)
+ */
 class Category extends Model
 {
-    use HasFactory;
+    use HasFactory, UploadImage;
 
     protected $table = 'categories';
 
@@ -37,8 +40,8 @@ class Category extends Model
         return $this->hasMany(Post::class);
     }
 
-//    public function setImageAttribute($value): string
-//    {
-//        return $this->uploadImage('image', $value);
-//    }
+    public function setImageAttribute($value): string
+    {
+        return $this->uploadImage('image', $value);
+    }
 }
