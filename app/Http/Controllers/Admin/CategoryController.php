@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CategoryStoreRequest;
+use App\Http\Requests\Admin\CategoryUpdateRequest;
 use App\Models\Category;
 use App\Models\Language;
 use Illuminate\Http\RedirectResponse;
@@ -22,7 +24,7 @@ class CategoryController extends Controller
             ->with('categories', $categories);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(CategoryStoreRequest $request): RedirectResponse
     {
         Category::create([
             'language_id' => $request->input('category_id'),
@@ -40,7 +42,7 @@ class CategoryController extends Controller
             ->with('languages', $languages);
     }
 
-    public function update(Request $request, Category $category)
+    public function update(CategoryUpdateRequest $request, Category $category): RedirectResponse
     {
         File::delete($category->image);
         $category->update([
@@ -48,6 +50,7 @@ class CategoryController extends Controller
             'name' => $request->input('name'),
             'image' => $request->file('image'),
         ]);
+        return back()->with('success', 'Данные успешно обновлены');
     }
 
     public function destroy(Category $category): RedirectResponse

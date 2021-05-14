@@ -14,7 +14,9 @@ class CategoryStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'language_id' => 'required',
+            'name' => 'required|string|max:50',
+            'image' => 'required',
         ];
     }
 }

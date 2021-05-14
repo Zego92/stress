@@ -16,6 +16,7 @@ class Feedback extends Model
         'user_id',
         'fio',
         'email',
+        'status',
         'phone',
         'title',
         'description',
@@ -24,5 +25,20 @@ class Feedback extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getStatusAttribute(): string
+    {
+        switch ($this->status){
+            case 1:
+                return 'Получен';
+                break;
+            case 2:
+                return 'Обрабатывается';
+                break;
+            case 3:
+                return 'Обратотан';
+                break;
+        }
     }
 }
