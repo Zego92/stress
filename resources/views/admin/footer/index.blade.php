@@ -79,17 +79,17 @@
         </div>
     </section>
     <!-- Modal -->
-    <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="footerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Новая Категория</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Новая Футер</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action="{{ route('admin.categories.store') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('admin.footer.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
@@ -107,22 +107,30 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="customFile">Изображение</label>
-                            <div class="custom-file">
-                                <input type="file" accept="image/*" name="image" value="{{ old('image') }}" class="custom-file-input @error('image') is-invalid @enderror" id="customFile">
-                                <label class="custom-file-label" for="customFile">Разрешенные форматы png, jpeg, jpg, svg</label>
-                                @error('image')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            <label for="contactTitle">Заголовок "Контакты"</label>
+                            <input type="text" class="form-control @error('contactTitle') is-invalid @enderror" id="contactTitle"
+                                   name="contactTitle" value="{{ old('contactTitle') }}">
+                            @error('contactTitle')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="name">Название</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                                   name="name" value="{{ old('name') }}">
-                            @error('name')
+                            <label for="phone">Телефон</label>
+                            <input type="text" class="form-control footer-phone @error('phone') is-invalid @enderror" id="phone"
+                                   name="phone" value="{{ old('phone') }}">
+                            @error('phone')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                                   name="email" value="{{ old('email') }}">
+                            @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

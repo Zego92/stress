@@ -7,8 +7,14 @@ import './Admin/adminDeletePopups'
 import './Admin/adminCustomMethods'
 require('summernote/lang/summernote-ru-RU')
 require('dropzone')
+let files = []
+let filename = Math.random().toString(10);
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+    }
+});
 
-let gMapLinks = document.getElementsByTagName('iframe')
 jQuery(document).ready(function () {
     jQuery('#startTime').mask('00:00', {
         onChange: function(cep){
@@ -30,12 +36,22 @@ jQuery(document).ready(function () {
     });
     jQuery('.user-phone').mask('+380000000000')
     jQuery('.feedback-phone').mask('+380000000000')
+    jQuery('.footer-phone').mask('+380000000000')
     jQuery('.feedback-description').summernote({
         lang: 'ru-Ru'
     })
     jQuery('.post-description').summernote({
-        lang: 'ru-RU' // default: 'en-US'
+        lang: 'ru-RU'
     })
+
+    $(".btn-success").click(function(){
+        var html = $(".clone").html();
+        $(".increment").after(html);
+    });
+    $("body").on("click",".btn-danger",function(){
+        $(this).parents(".control-group").remove();
+    });
+
 
     // DropzoneJS Demo Code Start
     Dropzone.autoDiscover = false
@@ -58,28 +74,38 @@ jQuery(document).ready(function () {
     })
 
     myDropzone.on("addedfile", function(file) {
-        console.log(file)
-        // Hookup the start button
-        // file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file) }
+
+    })
+    myDropzone.on('removedfile', function (file) {
+        let index = files.indexOf(file.dataURL)
+        if (index > -1){
+            files.splice(index, 1)
+            putImagesToSession(files)
+        }
+    })
+    myDropzone.on('thumbnail', function (file) {
+        files.push(file.dataURL)
+        putImagesToSession(files)
     })
 
-// Update the total progress bar
-//     myDropzone.on("totaluploadprogress", function(progress) {
-//         document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
-//     })
-
-    // myDropzone.on("sending", function(file) {
-    //     // Show the total progress bar when upload starts
-    //     document.querySelector("#total-progress").style.opacity = "1"
-    //     // And disable the start button
-    //     file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
-    // })
-
-// Hide the total progress bar when nothing's uploading anymore
     myDropzone.on("queuecomplete", function(progress) {
-        // document.querySelector("#total-progress").style.opacity = "0"
     })
 
 })
 
+function putImagesToSession(images = []) {
+    $.ajax({
+        url: '/admin/post-gallery',
+        method: 'POST',
+        data: {
+            images: images
+        },
+        success: function (response) {
+            console.log(response)
+        },
+        error: function (error) {
+            console.log(error)
+        }
+    })
+}
 

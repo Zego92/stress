@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Api\PostGallerySessionController;
 use App\Http\Controllers\Admin\Auth\RegisterController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -51,6 +52,9 @@ Route::prefix('/admin')->as('admin.')->namespace('Admin')->group(function(){
 // Admins with Authentication
 Route::prefix('/admin')->as('admin.')->middleware('auth:admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::namespace('Api')->group(function (){
+        Route::post('/post-gallery', [PostGallerySessionController::class, 'store']);
+    });
     Route::resource('static/banners', BannerController::class)->except(['edit', 'create']);
     Route::resource('categories', CategoryController::class)->except(['edit', 'create']);
     Route::resource('static/contacts', ContactController::class)->except(['edit', 'create']);

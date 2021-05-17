@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PostGallery extends Model
 {
-    use HasFactory, UploadImage;
+    use HasFactory;
 
     protected $table = 'post_galleries';
 
@@ -21,10 +21,5 @@ class PostGallery extends Model
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
-    }
-
-    public function setImageAttribute($value): string
-    {
-        return $this->uploadImage('image', $value);
     }
 }

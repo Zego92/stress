@@ -14,7 +14,10 @@ class FooterUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'language_id' => 'unique:footers',
+            'contactTitle' => 'string|max:50',
+            'phone' => 'string|max:50',
+            'email' => 'string|max:50|email',
         ];
     }
 }

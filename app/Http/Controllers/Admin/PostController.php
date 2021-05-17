@@ -10,6 +10,14 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    private $gallery;
+
+    public function __construct(PostGalleryController $gallery)
+    {
+        $this->gallery = $gallery;
+    }
+
     public function index()
     {
         $languages = Language::all();
@@ -23,7 +31,16 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $post = Post::create([
+            'language_id' => $request->input('language_id'),
+            'category_id' => $request->input('category_id'),
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+        ]);
+        $gallery = $this->gallery->store($request, $post);
+        if ($post && $gallery){
+            return back()->with('success', 'Данные успешно добавлены');
+        }
     }
 
     public function show(Post $post)

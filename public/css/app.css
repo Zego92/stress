@@ -71440,3 +71440,8 @@ body.swal2-toast-shown .swal2-container.swal2-bottom-right {
   content: "\412\44B\431\440\430\442\44C" !important;
 }
 
+.gMapsLink iframe {
+  height: 100px;
+  width: 160px;
+}
+

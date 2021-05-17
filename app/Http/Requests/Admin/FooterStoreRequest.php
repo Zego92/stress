@@ -14,7 +14,10 @@ class FooterStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'language_id' => 'required|unique:footers',
+            'contactTitle' => 'required|string|max:50',
+            'phone' => 'required|string|max:50',
+            'email' => 'required|string|max:50|email',
         ];
     }
 }
