@@ -51,13 +51,13 @@ Route::prefix('/admin')->as('admin.')->namespace('Admin')->group(function(){
 // Admins with Authentication
 Route::prefix('/admin')->as('admin.')->middleware('auth:admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('index');
-    Route::resource('banners', BannerController::class)->except(['edit', 'create']);
+    Route::resource('static/banners', BannerController::class)->except(['edit', 'create']);
     Route::resource('categories', CategoryController::class)->except(['edit', 'create']);
-    Route::resource('contacts', ContactController::class)->except(['edit', 'create']);
-    Route::resource('feedbacks', FeedbackController::class)->except(['create, edit']);
+    Route::resource('static/contacts', ContactController::class)->except(['edit', 'create']);
+    Route::resource('feedbacks', FeedbackController::class)->except(['create, edit', 'store']);
     Route::resource('static/page-feedback', FeedbackPageController::class)->except(['create', 'edit']);
     Route::resource('static/main/footer', FooterController::class)->except(['edit', 'create']);
-    Route::resource('languages', LanguageController::class)->except(['edit', 'create']);
+    Route::resource('languages', LanguageController::class)->except(['edit', 'create', 'show']);
     Route::resource('static/main/header', MainHeaderController::class)->except(['edit', 'create']);
     Route::resource('posts', PostController::class)->except(['edit', 'create']);
     Route::resource('posts/gallery', PostGalleryController::class)->except(['index', 'edit', 'create', 'show']);

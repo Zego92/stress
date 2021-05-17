@@ -17,7 +17,6 @@ class User extends Authenticatable
         'username',
         'email',
         'phone',
-        'gravatar',
         'password',
     ];
 
@@ -33,5 +32,14 @@ class User extends Authenticatable
     public function feedbacks(): HasMany
     {
         return $this->hasMany(Feedback::class);
+    }
+
+    public function setUsernameAttribute($value)
+    {
+        if (empty($value)){
+            $this->attributes['nickname'] = $this->name;
+        }else{
+            $this->attributes['nickname'] = $value;
+        }
     }
 }

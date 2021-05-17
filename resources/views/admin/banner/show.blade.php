@@ -62,7 +62,7 @@
                                         <a href="{{ route('admin.banners.index') }}" class="btn btn-outline-danger btn-block">Назад</a>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
-                                        <button type="submit" class="btn btn-outline-success btn-block">Добавить</button>
+                                        <button type="submit" class="btn btn-outline-success btn-block">Обновить</button>
                                     </div>
                                 </div>
                             </form>

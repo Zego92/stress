@@ -175,7 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Telegram\Bot\Laravel\TelegramServiceProvider::class
+        Telegram\Bot\Laravel\TelegramServiceProvider::class,
+        Laravolt\Avatar\ServiceProvider::class,
 
     ],
 
@@ -229,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Avatar' => Laravolt\Avatar\Facade::class,
     ],
 
 ];

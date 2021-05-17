@@ -33,7 +33,7 @@
                                         <th>Изображение</th>
                                         <th>Название</th>
                                         <th>Язык</th>
-                                        <th>Действие</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -50,11 +50,11 @@
                                                         <a class="btn btn-outline-primary mr-2"
                                                            href="{{ route('admin.banners.show', $banner) }}"><i
                                                                 class="fas fa-info-circle"></i></a>
-                                                        <form method="POST"
+                                                        <form method="POST" class="deleteBannerForm"
                                                               action="{{ route('admin.banners.destroy', $banner) }}">
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE">
-                                                            <button type="submit" class="btn btn-outline-danger">
+                                                            <button type="submit" class="btn btn-outline-danger deleteBanner deleteForm">
                                                                 <i class="fas fa-trash"></i>
                                                             </button>
                                                         </form>
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            {{ $banners->links('tailwind') }}
+                            {{ $banners->links('vendor.pagination.bootstrap-4') }}
                         </div>
                         <div class="card-footer clearfix" style="display: block;"></div>
                     </div>

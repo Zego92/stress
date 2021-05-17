@@ -52,11 +52,11 @@
                                                         <a class="btn btn-outline-primary mr-2"
                                                            href="{{ route('admin.categories.show', $category) }}"><i
                                                                 class="fas fa-info-circle"></i></a>
-                                                        <form method="POST"
+                                                        <form method="POST" class="deleteCategoryForm"
                                                               action="{{ route('admin.categories.destroy', $category) }}">
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE">
-                                                            <button type="submit" class="btn btn-outline-danger">
+                                                            <button type="submit" class="btn btn-outline-danger deleteCategory deleteForm">
                                                                 <i class="fas fa-trash"></i>
                                                             </button>
                                                         </form>
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            {{ $banners->links('tailwind') }}
+                            {{ $categories->links('vendor.pagination.bootstrap-4') }}
                         </div>
                         <div class="card-footer clearfix" style="display: block;"></div>
                     </div>

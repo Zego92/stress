@@ -24,12 +24,6 @@ class LanguageController extends Controller
         return redirect()->back()->with('success', 'Данные успешно добавлены');
     }
 
-    public function show(Language $language)
-    {
-        return view('admin.language.show', compact('language'));
-    }
-
-
     public function destroy(Language $language): RedirectResponse
     {
         try {

@@ -15,8 +15,8 @@
                         <div class="card-header border-transparent">
                             <h3 class="card-title">Информация</h3>
                         </div>
-                        <div class="card-body p-0">
-                            <form method="post" action="{{ route('admin.banners.update') }}" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <form method="post" action="{{ route('admin.categories.update', $category) }}" enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
                                 <div class="form-group">
@@ -24,7 +24,7 @@
                                     <select title="" class="form-control @error('language_id') is-invalid @enderror" name="language_id">
                                         @foreach($languages as $language)
                                             <option value="{{ $language->id }}"
-                                                    @if($header->language->id == $language->id) selected @endif>{{ $language->code }}</option>
+                                                    @if($category->language->id == $language->id) selected @endif>{{ $language->code }}</option>
                                         @endforeach
                                     </select>
                                     @error('language_id')
@@ -62,7 +62,7 @@
                                         <a href="{{ route('admin.categories.index') }}" class="btn btn-outline-danger btn-block">Назад</a>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
-                                        <button type="submit" class="btn btn-outline-success btn-block">Добавить</button>
+                                        <button type="submit" class="btn btn-outline-success btn-block">Обновить</button>
                                     </div>
                                 </div>
                             </form>

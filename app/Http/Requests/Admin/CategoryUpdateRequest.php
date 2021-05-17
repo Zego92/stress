@@ -14,7 +14,7 @@ class CategoryUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'sometimes|nullable|string|max:50',
+            'name' => 'string|max:50',
         ];
     }
 }

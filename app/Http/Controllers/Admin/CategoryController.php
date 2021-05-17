@@ -18,7 +18,7 @@ class CategoryController extends Controller
         $languages = Language::all();
         $categories = Category::with('language')
             ->withCount('posts')
-            ->paginate(10);
+            ->paginate(6);
         return view('admin.categories.index')
             ->with('languages', $languages)
             ->with('categories', $categories);
@@ -50,7 +50,7 @@ class CategoryController extends Controller
             'name' => $request->input('name'),
             'image' => $request->file('image'),
         ]);
-        return back()->with('success', 'Данные успешно обновлены');
+        return redirect()->route('admin.categories.index')->with('success', 'Данные успешно обновлены');
     }
 
     public function destroy(Category $category): RedirectResponse

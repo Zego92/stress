@@ -32,7 +32,7 @@
                                     <tr>
                                         <th style="width: 33%;">ID</th>
                                         <th style="width: 33%;">Язык</th>
-                                        <th style="width: 33%;">Действие</th>
+                                        <th style="width: 33%;"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -44,14 +44,11 @@
                                                 <div class="btn-toolbar" role="toolbar"
                                                      aria-label="Toolbar with button groups">
                                                     <div class="btn-group mr-2" role="group" aria-label="First group">
-                                                        <a class="btn btn-outline-primary mr-2"
-                                                           href="{{ route('admin.languages.show', $language) }}"><i
-                                                                class="fas fa-info-circle"></i></a>
-                                                        <form method="POST"
+                                                        <form method="POST" class="deleteLanguageForm"
                                                               action="{{ route('admin.languages.destroy', $language) }}">
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE">
-                                                            <button type="submit" class="btn btn-outline-danger">
+                                                            <button type="submit" class="btn btn-outline-danger deleteLanguage deleteForm">
                                                                 <i class="fas fa-trash"></i>
                                                             </button>
                                                         </form>

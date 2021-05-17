@@ -16,7 +16,7 @@ class BannerStoreRequest extends FormRequest
         return [
             'language_id' => 'required|unique:banners',
             'image' => 'required',
-            'title' => 'required',
+            'title' => 'required|string|max:100',
         ];
     }
 }

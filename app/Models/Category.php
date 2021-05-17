@@ -32,7 +32,7 @@ class Category extends Model
 
     public function language(): BelongsTo
     {
-        return $this->belongsTo(Language::class);
+        return $this->belongsTo(Language::class, 'language_id', 'id');
     }
 
     public function posts(): HasMany

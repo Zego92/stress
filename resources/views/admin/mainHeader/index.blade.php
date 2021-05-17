@@ -29,14 +29,14 @@
                                 <table class="table m-0">
                                     <thead>
                                     <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Логотип</th>
-                                        <th scope="col">Главная <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
-                                        <th scope="col">Наши Работы <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
-                                        <th scope="col">Контакты <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
-                                        <th scope="col">Калькулятор <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
-                                        <th scope="col">Язык</th>
-                                        <th scope="col">Действие</th>
+                                        <th>ID</th>
+                                        <th>Логотип</th>
+                                        <th>Главная <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
+                                        <th>Наши Работы <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
+                                        <th>Контакты <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
+                                        <th>Калькулятор <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
+                                        <th>Язык</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -60,7 +60,7 @@
                                                             @method('DELETE')
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE">
-                                                            <a class="btn btn-outline-danger btn-sm deleteHeader">
+                                                            <a class="btn btn-outline-danger btn-sm deleteHeader deleteForm">
                                                                 <i class="fas fa-trash"></i>
                                                             </a>
                                                         </form>
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            {{ $headers->links('tailwind') }}
+                            {{ $headers->links('vendor.pagination.bootstrap-4') }}
                         </div>
                         <div class="card-footer clearfix" style="display: block;"></div>
                     </div>

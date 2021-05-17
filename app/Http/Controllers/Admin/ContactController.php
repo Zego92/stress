@@ -58,7 +58,7 @@ class ContactController extends Controller
             'email' => $request->email,
             'gMapLink' => $request->gMapLink,
         ]);
-        return back()->with('success', 'Данные успешно обновлены');
+        return redirect()->route('admin.contacts.index')->with('success', 'Данные успешно обновлены');
     }
 
     public function destroy(Contact $contact): RedirectResponse

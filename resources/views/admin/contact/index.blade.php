@@ -46,7 +46,7 @@
                                             <td>{{ $contact->address }}</td>
                                             <td>С {{ $contact->startTimeWork }} до {{ $contact->endTimeWork }}</td>
                                             <td>{{ $contact->email }}</td>
-                                            <td></td>
+                                            <td class="gMapsLink">{!! $contact->gMapLink !!}</td>
                                             <td>
                                                 <div class="btn-toolbar" role="toolbar"
                                                      aria-label="Toolbar with button groups">
@@ -54,11 +54,11 @@
                                                         <a class="btn btn-outline-primary mr-2"
                                                            href="{{ route('admin.contacts.show', $contact) }}"><i
                                                                 class="fas fa-info-circle"></i></a>
-                                                        <form method="POST"
+                                                        <form method="POST" class="deleteContactForm"
                                                               action="{{ route('admin.contacts.destroy', $contact) }}">
                                                             @csrf
                                                             <input type="hidden" name="_method" value="DELETE">
-                                                            <button type="submit" class="btn btn-outline-danger">
+                                                            <button type="submit" class="btn btn-outline-danger deleteContact deleteForm">
                                                                 <i class="fas fa-trash"></i>
                                                             </button>
                                                         </form>
@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            {{ $contacts->links('tailwind') }}
+                            {{ $contacts->links('vendor.pagination.bootstrap-4') }}
                         </div>
                         <div class="card-footer clearfix" style="display: block;"></div>
                     </div>
@@ -81,12 +81,12 @@
         </div>
     </section>
     <!-- Modal -->
-    <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Новая Категория</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Новый Контакт</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -157,6 +157,30 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Время работы</label>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <input title="" type="text" class="form-control startTime @error('startTimeWork') is-invalid @enderror" id="startTime"
+                                   name="startTimeWork" value="{{ old('startTimeWork') }}">
+                                    @error('startTimeWork')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <input title="" type="text" class="form-control endTime @error('endTimeWork') is-invalid @enderror" id="endTime"
+                                   name="endTimeWork" value="{{ old('endTimeWork') }}">
+                                    @error('endTimeWork')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -16,7 +16,7 @@ class BannerController extends Controller
     public function index()
     {
         $languages = Language::all();
-        $banners = Banner::with('language')->cursorPaginate(10);
+        $banners = Banner::with('language')->paginate(10);
         return view('admin.banner.index')
             ->with('languages', $languages)
             ->with('banners', $banners);
@@ -40,8 +40,7 @@ class BannerController extends Controller
             ->with('languages', $languages);
     }
 
-//    public function update(BannerUpdateRequest $request, Banner $banner): RedirectResponse
-    public function update(Request $request, Banner $banner)
+    public function update(BannerUpdateRequest $request, Banner $banner): RedirectResponse
     {
         File::delete($banner->image);
         $banner->update([

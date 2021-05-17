@@ -14,7 +14,7 @@ class BannerUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'string|max:100',
         ];
     }
 }
