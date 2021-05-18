@@ -44,13 +44,6 @@ jQuery(document).ready(function () {
         lang: 'ru-RU'
     })
 
-    $(".btn-success").click(function(){
-        var html = $(".clone").html();
-        $(".increment").after(html);
-    });
-    $("body").on("click",".btn-danger",function(){
-        $(this).parents(".control-group").remove();
-    });
 
 
     // DropzoneJS Demo Code Start
@@ -80,15 +73,21 @@ jQuery(document).ready(function () {
         let index = files.indexOf(file.dataURL)
         if (index > -1){
             files.splice(index, 1)
-            putImagesToSession(files)
+            // putImagesToSession(files)
         }
     })
     myDropzone.on('thumbnail', function (file) {
         files.push(file.dataURL)
-        putImagesToSession(files)
+        // putImagesToSession(files)
     })
 
     myDropzone.on("queuecomplete", function(progress) {
+    })
+
+    jQuery('.addNewPost').click(function (event) {
+        event.preventDefault()
+        putImagesToSession(files)
+        jQuery('.addNewPostForm').submit();
     })
 
 })

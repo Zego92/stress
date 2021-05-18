@@ -36,12 +36,12 @@ class Post extends Model
 
     public function galleries(): HasMany
     {
-        return $this->hasMany(PostGallery::class);
+        return $this->hasMany(PostGallery::class, 'post_id', 'id');
     }
 
-    public function setSlugAttribute(): string
+    public function setSlugAttribute($value): string
     {
-        return $this->attributes['slug'] = Str::slug($this->title);
+        return $this->attributes['slug'] = Str::slug($value);
     }
 
     public function setImageAttribute($value): string

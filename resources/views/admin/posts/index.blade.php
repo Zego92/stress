@@ -41,7 +41,7 @@
                                     @foreach($posts as $key => $post)
                                         <tr>
                                             <td>{{ $key +1 }}</td>
-                                            <td><img height="25px" src="{{ $post->image }}" alt="{{ $post->image }}">
+                                            <td><img height="25px" src="{{ asset($post->image) }}" alt="{{ $post->image }}">
                                             </td>
                                             <td>{{ $post->category->name }}</td>
                                             <td>{{ $post->title }}</td>
@@ -91,7 +91,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action="{{ route('admin.posts.store') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('admin.posts.store') }}" class="addNewPostForm" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
@@ -161,76 +161,45 @@
                             </span>
                             @enderror
                         </div>
-{{--                        <div class="form-group">--}}
-{{--                            <input type="hidden" name="postGalleries" id="postGalleries" value="" multiple>--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-md-12">--}}
-{{--                                    <div id="actions" class="row">--}}
-{{--                                        <div class="col-md-12">--}}
-{{--                                            <div class="btn-group w-100">--}}
-{{--                                                <span class="btn btn-success col fileinput-button">--}}
-{{--                                                    <i class="fas fa-plus"></i>--}}
-{{--                                                    <span>Добавить изображения</span>--}}
-{{--                                                </span>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="table table-striped files" id="previews">--}}
-{{--                                        <div id="template" class="row mt-2">--}}
-{{--                                            <div class="col-auto">--}}
-{{--                                                <span class="preview"><img src="data:," alt="" data-dz-thumbnail/></span>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="col d-flex align-items-center">--}}
-{{--                                                <p class="mb-0">--}}
-{{--                                                    <span class="lead" data-dz-name></span>--}}
-{{--                                                    (<span data-dz-size></span>)--}}
-{{--                                                </p>--}}
-{{--                                                <strong class="error text-danger" data-dz-errormessage></strong>--}}
-{{--                                            </div>--}}
-{{--                                            <div class="col-auto d-flex align-items-center">--}}
-{{--                                                <div class="btn-group">--}}
-{{--                                                    <button data-dz-remove class="btn btn-danger delete">--}}
-{{--                                                        <i class="fas fa-trash"></i>--}}
-{{--                                                        <span>Удалить</span>--}}
-{{--                                                    </button>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-                    </div>
-                    <div class="form-group">
-                        <form method="post" action="{{url('upload_data')}}" enctype="multipart/form-data">
-                            {{csrf_field()}}
+                        <div class="form-group">
+                            <input type="hidden" name="postGalleries" id="postGalleries" value="" multiple>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="button" class="btn btn-block btn-success">Добавить</button>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <div class="card-body" style="max-height: 140px">
-                                            <img height="140px" src="{{ asset('add.jpeg') }}" alt="">
+                                    <div id="actions" class="row">
+                                        <div class="col-md-12">
+                                            <div class="btn-group w-100">
+                                                <span class="btn btn-success col fileinput-button">
+                                                    <i class="fas fa-plus"></i>
+                                                    <span>Добавить изображения</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table table-striped files" id="previews">
+                                        <div id="template" class="row mt-2">
+                                            <div class="col-auto">
+                                                <span class="preview"><img src="data:," alt="" data-dz-thumbnail/></span>
+                                            </div>
+                                            <div class="col d-flex align-items-center">
+                                                <p class="mb-0">
+                                                    <span class="lead" data-dz-name></span>
+                                                    (<span data-dz-size></span>)
+                                                </p>
+                                                <strong class="error text-danger" data-dz-errormessage></strong>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <div class="btn-group">
+                                                    <button data-dz-remove class="btn btn-danger delete">
+                                                        <i class="fas fa-trash"></i>
+                                                        <span>Удалить</span>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="input-group control-group increment" >
-                                <input type="file" name="filename[]" class="form-control">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
-                                </div>
-                            </div>
-                            <div class="clone hide">
-                                <div class="control-group input-group" style="margin-top:10px">
-                                    <input type="file" name="filename[]" class="form-control">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <div class="row w-100">
@@ -240,7 +209,7 @@
                                 </button>
                             </div>
                             <div class="col-md-6">
-                                <button type="submit" class="btn btn-outline-success btn-block">Добавить</button>
+                                <button type="submit" class="btn btn-outline-success btn-block addNewPost">Добавить</button>
                             </div>
                         </div>
                     </div>

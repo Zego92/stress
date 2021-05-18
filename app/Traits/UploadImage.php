@@ -27,27 +27,11 @@ trait UploadImage
         return $this->attributes[$attr] = (string) "uploads/image/$this->table/$imageName";
     }
 
-    protected function convertBase64(array $images)
+    protected function convertBase64(array $images, string $tableName)
     {
         if (!is_array($images)){
             return false;
         }
-        Session::forget('images');
-        $galleries = [];
-        foreach ($images as $image){
-            $explode_1 = explode(';', $image);
-            $explode_2 = explode('/', $explode_1[0]);
-            $imageName = Str::random(12) . '.' . $explode_2[1];
-            $galleries .= $imageName;
-            $collection = collect($galleries);
-            Session::push('images', $collection);
-//            Image::make($image)->save(public_path("uploads/image/$tableName/$imageName"), 100);
-        }
-        return $galleries;
-    }
-
-    protected function uploadBase64Image(array $images, string $tableName)
-    {
         $uploadDir = public_path('uploads/');
         $imageDir = public_path('uploads/image/');
         if (!file_exists($uploadDir)){
@@ -59,8 +43,16 @@ trait UploadImage
         if (!file_exists(public_path("uploads/image/$tableName/"))){
             mkdir(public_path("uploads/image/$tableName/"));
         }
+        $galleries = [];
         foreach ($images as $image){
-            Image::make($image)->save(public_path("uploads/image/$tableName/$image") , 100);
+            $explode_1 = explode(';', $image);
+            $explode_2 = explode('/', $explode_1[0]);
+            $imageName = Str::random(12) . '.' . $explode_2[1];
+            array_push($galleries, "uploads/image/$tableName/$imageName");
+            Image::make($image)->save(public_path("uploads/image/$tableName/$imageName") , 100);
         }
+        $collection = collect($galleries);
+        Session::push('images', $collection);
     }
+
 }

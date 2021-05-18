@@ -13,26 +13,33 @@ class PostObserver
 {
     public function created(Post $post)
     {
-        $galleries = PostGallery::where('post_id', $post->id)->get();
+//        $galleries = PostGallery::where('post_id', '=', $post->id)->get();
+        $galleries = $post->galleries()->where('post_id', '=', $post->id)->get();
         $languages = Language::where('code', '!=', $post->language->code)->get();
+        $id = 0;
+        foreach ($galleries as $gallery){
+            info($gallery);
+        }
+
         foreach ($languages as $language){
-            DB::table('posts')->insert([
+            $id = $item = DB::table('posts')->insertGetId([
                 'language_id' => $language->id,
                 'category_id' => $post->category_id,
                 'title' => $post->title,
                 'slug' => Str::slug($post->title),
                 'description' => $post->description,
                 'image' => $post->image,
+                'created_at' => $post->created_at,
+                'updated_at' => $post->updated_at,
             ]);
         }
-        if (isset($galleries) && !empty($galleries)){
-            foreach ($galleries as $gallery){
-                DB::table('post_galleries')->insert([
-                    'post_id' => $post->id,
-                    'image' => $gallery->image,
-                ]);
-            }
+        foreach ($galleries as $gallery){
+            DB::table('post_galleries')->insert([
+                'post_id' => $id,
+                'image' => $gallery->image ?? 'no-image.png',
+            ]);
         }
+
 
     }
 
@@ -43,7 +50,18 @@ class PostObserver
 
     public function deleted(Post $post)
     {
-        File::delete($post->image);
+        $gallery = PostGallery::where('post_id', $post->id)->get();
+        info($gallery);
+//        foreach ($post->galleries()->get() as $gallery){
+//            info('deleteGallery',$gallery);
+//            File::delete($gallery->image);
+//        }
+//        foreach (Post::where('slug', $post->slug)->get() as $item){
+//            $item->delete();
+//        }
+//        File::delete($post->image);
+
+
     }
 
     public function restored(Post $post)
