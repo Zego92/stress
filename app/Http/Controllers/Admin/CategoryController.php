@@ -29,6 +29,7 @@ class CategoryController extends Controller
         Category::create([
             'language_id' => $request->input('category_id'),
             'name' => $request->input('name'),
+            'slug' => $request->input('name'),
             'image' => $request->file('image')
         ]);
         return back()->with('success', 'Данные успешно добавлены');
@@ -44,10 +45,12 @@ class CategoryController extends Controller
 
     public function update(CategoryUpdateRequest $request, Category $category): RedirectResponse
     {
-        File::delete($category->image);
+        if ($request->has('image')){
+            File::delete($category->image);
+            $category->update(['name' => $request->input('name')]);
+        }
         $category->update([
             'language_id' => $request->input('language_id'),
-            'name' => $request->input('name'),
             'image' => $request->file('image'),
         ]);
         return redirect()->route('admin.categories.index')->with('success', 'Данные успешно обновлены');

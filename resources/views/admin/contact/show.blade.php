@@ -100,7 +100,33 @@
                                             </span>
                                     @enderror
                                 </div>
-                                <div class="row w-100 mt-5">
+                                <div class="form-group">
+                                    <label for="email">Время работы</label>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12">
+                                            <input title="" type="text" class="form-control startTime @error('startTimeWork') is-invalid @enderror" id="startTime"
+                                                   name="startTimeWork" value="{{ \Illuminate\Support\Carbon::parse($contact->startTimeWork)->format('H:i') }}">
+                                            @error('startTimeWork')
+                                            <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <input title="" type="text" class="form-control endTime @error('endTimeWork') is-invalid @enderror" id="endTime"
+                                                   name="endTimeWork" value="{{ \Illuminate\Support\Carbon::parse($contact->endTimeWork)->format('H:i') }}">
+                                            @error('endTimeWork')
+                                            <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-footer">
+                                <div class="row w-100">
                                     <div class="col-md-6">
                                         <a href="{{ route('admin.contacts.index') }}"
                                            class="btn btn-outline-danger btn-block">Назад</a>

@@ -14,7 +14,6 @@ class ContactUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'language_id' => 'unique:contacts',
             'firstPhone' => 'string|max:100',
             'secondPhone' => 'string|max:100',
             'thirdPhone' => 'string|max:100',

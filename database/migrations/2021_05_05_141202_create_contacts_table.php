@@ -15,8 +15,8 @@ class CreateContactsTable extends Migration
             $table->string('secondPhone');
             $table->string('thirdPhone');
             $table->string('address');
-            $table->timestamp('startTimeWork');
-            $table->timestamp('endTimeWork');
+            $table->string('startTimeWork');
+            $table->string('endTimeWork');
             $table->string('email');
             $table->text('gMapLink');
             $table->timestamps();

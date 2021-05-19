@@ -42,8 +42,8 @@
                                         <tr>
                                             <td>{{ $key +1 }}</td>
                                             <td>{{ $footer->contactTitle }}</td>
-                                            <td>{{ $footer->email }}</td>
                                             <td>{{ $footer->phone }}</td>
+                                            <td>{{ $footer->email }}</td>
                                             <td>{{ $footer->language->code }}</td>
                                             <td>
                                                 <div class="btn-toolbar" role="toolbar"

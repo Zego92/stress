@@ -13,14 +13,14 @@
                 <div class="col-md-12 mt-4">
                     <div class="card">
                         <div class="card-header border-transparent">
-                            <h3 class="card-title">Изменение данных</h3>
+                            <h3 class="card-title">Информация</h3>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('admin.header.update', $header) }}" method="post" enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
                                 <div class="form-group">
-                                    <label for="homeTitle">Язык</label>
+                                    <label for="language_id">Язык</label>
                                     <select title="" class="form-control @error('language_id') is-invalid @enderror"
                                             name="language_id">
                                         @foreach($languages as $language)
@@ -37,8 +37,8 @@
                                 <div class="form-group">
                                     <label for="customFile">Логотип</label>
                                     <div class="custom-file">
-                                        <input type="file" accept="image/*" name="brandLogoImage" class="custom-file-input @error('brandLogoImage') is-invalid @enderror" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Логотип сайта</label>
+                                        <input type="file" accept="image/*" name="brandLogoImage" value="{{ $header->brandLogoImage }}" class="custom-file-input @error('brandLogoImage') is-invalid @enderror" id="customFile">
+                                        <label class="custom-file-label" for="customFile">{{ $header->brandLogoImage }}</label>
                                         @error('brandLogoImage')
                                         <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

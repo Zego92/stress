@@ -41,7 +41,7 @@
                                     @foreach($categories as $key => $category)
                                         <tr>
                                             <td>{{ $key +1 }}</td>
-                                            <td><img height="25px" src="{{ $category->image }}" alt="{{ $category->image }}"></td>
+                                            <td><img height="25px" src="{{ asset($category->image) }}" alt="{{ $category->image }}"></td>
                                             <td>{{ $category->name }}</td>
                                             <td>{{ $category->posts_count }}</td>
                                             <td>{{ $category->language->code }}</td>

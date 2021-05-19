@@ -9,9 +9,11 @@ use App\Models\Feedback;
 use App\Models\Language;
 use App\Models\MainHeader;
 use App\Models\Post;
+use App\Models\PostGallery;
 use App\Observers\Admin\CategoryObserver;
 use App\Observers\Admin\LanguageObserver;
 use App\Observers\Admin\MainHeaderObserver;
+use App\Observers\Admin\PostGalleryObserver;
 use App\Observers\Admin\PostObserver;
 use App\Observers\FeedbackObserver;
 use Illuminate\Auth\Events\Registered;
@@ -47,5 +49,6 @@ class EventServiceProvider extends ServiceProvider
         Category::observe(CategoryObserver::class);
         Language::observe(LanguageObserver::class);
         Post::observe(PostObserver::class);
+        PostGallery::observe(PostGalleryObserver::class);
     }
 }

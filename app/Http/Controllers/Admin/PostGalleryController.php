@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\PostGallery;
 use App\Traits\UploadImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 
 class PostGalleryController extends Controller
@@ -14,27 +15,29 @@ class PostGalleryController extends Controller
 
     use UploadImage;
 
-    public function store(Request $request, Post $post)
+    public function store(Request $request)
     {
         $images = Session::get('images');
         foreach ($images as $key => $value){
             foreach ($value as $item){
                 $gallery = new PostGallery();
-                $gallery->post_id = $post->id;
+                $gallery->post_id = $request->post_id;
                 $gallery->image = $item;
                 $gallery->save();
             }
 
         }
-    }
-
-    public function update(Request $request, PostGallery $gallery)
-    {
-        //
+        return back()->with('success', 'Данные успешно добавлены');
     }
 
     public function destroy(PostGallery $gallery)
     {
-        //
+        try {
+            File::delete($gallery->image);
+            $gallery->delete();
+            return back()->with('success', 'Данные успешно удалены');
+        }catch (\Exception $exception){
+            return back()->with('error', $exception->getMessage());
+        }
     }
 }

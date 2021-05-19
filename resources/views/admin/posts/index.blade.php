@@ -10,7 +10,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row justify-content-center align-items-center">
-                <div class="col-md-12 mt-4">
+                <div class="col-md-11 mt-4">
                     <div class="card">
                         <div class="card-header border-transparent">
                             <h3 class="card-title">Наши работы</h3>
@@ -160,45 +160,6 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
-                        </div>
-                        <div class="form-group">
-                            <input type="hidden" name="postGalleries" id="postGalleries" value="" multiple>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div id="actions" class="row">
-                                        <div class="col-md-12">
-                                            <div class="btn-group w-100">
-                                                <span class="btn btn-success col fileinput-button">
-                                                    <i class="fas fa-plus"></i>
-                                                    <span>Добавить изображения</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="table table-striped files" id="previews">
-                                        <div id="template" class="row mt-2">
-                                            <div class="col-auto">
-                                                <span class="preview"><img src="data:," alt="" data-dz-thumbnail/></span>
-                                            </div>
-                                            <div class="col d-flex align-items-center">
-                                                <p class="mb-0">
-                                                    <span class="lead" data-dz-name></span>
-                                                    (<span data-dz-size></span>)
-                                                </p>
-                                                <strong class="error text-danger" data-dz-errormessage></strong>
-                                            </div>
-                                            <div class="col-auto d-flex align-items-center">
-                                                <div class="btn-group">
-                                                    <button data-dz-remove class="btn btn-danger delete">
-                                                        <i class="fas fa-trash"></i>
-                                                        <span>Удалить</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">

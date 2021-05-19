@@ -103,10 +103,10 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="nickname">Псевдоним</label>
-                            <input type="text" class="form-control @error('nickname') is-invalid @enderror" id="nickname"
-                                   name="nickname" value="{{ old('nickname') }}">
-                            @error('nickname')
+                            <label for="username">Псевдоним</label>
+                            <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
+                                   name="username" value="{{ old('username') }}">
+                            @error('username')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

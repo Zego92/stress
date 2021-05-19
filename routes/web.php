@@ -64,6 +64,6 @@ Route::prefix('/admin')->as('admin.')->middleware('auth:admin')->group(function(
     Route::resource('languages', LanguageController::class)->except(['edit', 'create', 'show']);
     Route::resource('static/main/header', MainHeaderController::class)->except(['edit', 'create']);
     Route::resource('posts', PostController::class)->except(['edit', 'create']);
-    Route::resource('posts/gallery', PostGalleryController::class)->except(['index', 'edit', 'create', 'show']);
+    Route::resource('posts/gallery', PostGalleryController::class)->except(['index', 'edit', 'create', 'show', 'update']);
     Route::resource('users', UserController::class)->except(['edit', 'create']);
 });

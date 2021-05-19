@@ -13,3 +13,8 @@ yarn-error.log
 /.idea
 package-lock.json
 composer.lock
+/public/uploads/image/banners/*
+/public/uploads/image/categories/*
+/public/uploads/image/main_headers/*
+/public/uploads/image/post_galleries/*
+/public/uploads/image/posts/*

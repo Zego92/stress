@@ -44,7 +44,7 @@
                                             <td>{{ $key +1 }}</td>
                                             <td>{{ $contact->firstPhone }}, {{ $contact->secondPhone }}, {{ $contact->thirdPhone }}</td>
                                             <td>{{ $contact->address }}</td>
-                                            <td>С {{ $contact->startTimeWork }} до {{ $contact->endTimeWork }}</td>
+                                            <td>С {{ \Illuminate\Support\Carbon::parse($contact->startTimeWork)->format('H:i') }} до {{ \Illuminate\Support\Carbon::parse($contact->endTimeWork)->format('H:i') }}</td>
                                             <td>{{ $contact->email }}</td>
                                             <td class="gMapsLink">{!! $contact->gMapLink !!}</td>
                                             <td>
@@ -159,6 +159,17 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="gMapLink">GMAP</label>
+                            <input type="text" class="form-control @error('gMapLink') is-invalid @enderror"
+                                   id="gMapLink"
+                                   name="gMapLink" value="{{ old('gMapLink') }}">
+                            @error('gMapLink')
+                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="email">Время работы</label>
                             <div class="row">
                                 <div class="col-md-6 col-sm-12">
@@ -180,7 +191,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="modal-footer">

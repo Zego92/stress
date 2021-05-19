@@ -42,10 +42,12 @@ class BannerController extends Controller
 
     public function update(BannerUpdateRequest $request, Banner $banner): RedirectResponse
     {
-        File::delete($banner->image);
+        if ($request->has('image')){
+            File::delete($banner->image);
+            $banner->update(['image' => $request->file('image')]);
+        }
         $banner->update([
             'language_id' => $request->language_id,
-            'image' => $request->file('image'),
             'title' => $request->title,
         ]);
         return redirect()->route('admin.banners.index')->with('success', 'Данные успешно обновлены');
@@ -54,6 +56,7 @@ class BannerController extends Controller
     public function destroy(Banner $banner): RedirectResponse
     {
         try {
+            File::delete($banner->image);
             $banner->delete();
             return back()->with('success', 'Данные успешно удалены');
         }catch (\Exception $exception){

@@ -13,7 +13,7 @@ class CreateCategoriesTable extends Migration
             $table->unsignedBigInteger('language_id');
             $table->string('name')->unique();
             $table->string('slug');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->timestamps();
             $table->foreign('language_id')
                 ->references('id')

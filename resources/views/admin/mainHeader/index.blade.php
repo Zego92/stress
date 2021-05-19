@@ -10,7 +10,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row justify-content-center align-items-center">
-                <div class="col-md-12 mt-4">
+                <div class="col-md-11 mt-4">
                     <div class="card">
                         <div class="card-header border-transparent">
                             <h3 class="card-title">Шапка главной страницы</h3>

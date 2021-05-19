@@ -26,12 +26,12 @@ class MainHeaderController extends Controller
     public function store(MainHeaderStoreRequest $request): RedirectResponse
     {
         MainHeader::create([
-            'language_id' => $request->language_id,
+            'language_id' => $request->input('language_id'),
             'brandLogoImage' => $request->file('brandLogoImage'),
-            'homeTitle' => $request->homeTitle,
-            'ourProjectsTitle' => $request->ourProjectsTitle,
-            'contactTitle' => $request->contactTitle,
-            'feedbackTitle' => $request->feedbackTitle,
+            'homeTitle' => $request->input('homeTitle'),
+            'ourProjectsTitle' => $request->input('ourProjectsTitle'),
+            'contactTitle' => $request->input('contactTitle'),
+            'feedbackTitle' => $request->input('feedbackTitle'),
         ]);
         return back()->with('success', 'Данные успешно добавлены');
     }
@@ -46,14 +46,16 @@ class MainHeaderController extends Controller
 
     public function update(MainHeaderUpdateRequest $request, MainHeader $header): RedirectResponse
     {
-        File::delete($header->brandLogoImage);
+        if ($request->has('brandLogoImage')){
+            File::delete($header->brandLogoImage);
+            $header->update(['brandLogoImage' => $request->file('brandLogoImage')]);
+        }
         $header->update([
-            'language_id' => $request->language_id,
-            'brandLogoImage' => $request->file('brandLogoImage'),
-            'homeTitle' => $request->homeTitle,
-            'ourProjectsTitle' => $request->ourProjectsTitle,
-            'contactTitle' => $request->contactTitle,
-            'feedbackTitle' => $request->feedbackTitle,
+            'language_id' => $request->input('language_id'),
+            'homeTitle' => $request->input('homeTitle'),
+            'ourProjectsTitle' => $request->input('ourProjectsTitle'),
+            'contactTitle' => $request->input('contactTitle'),
+            'feedbackTitle' => $request->input('feedbackTitle'),
         ]);
         return redirect()->route('admin.header.index')->with('success', 'Данные успешно обновлены');
     }
@@ -61,6 +63,7 @@ class MainHeaderController extends Controller
     public function destroy(MainHeader $header): RedirectResponse
     {
         try {
+            File::delete($header->brandLogoImage);
             $header->delete();
             return back()->with('success', 'Данные успешно удалены');
         }catch (\Exception $exception){

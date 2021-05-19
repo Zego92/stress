@@ -49,7 +49,7 @@ class FooterController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
         ]);
-        return redirect()->route('admin.feedbacks.index')->with('success', 'Данные успешно обновлены');
+        return redirect()->route('admin.footer.index')->with('success', 'Данные успешно обновлены');
     }
 
     public function destroy(Footer $footer): RedirectResponse

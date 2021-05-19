@@ -8,6 +8,7 @@ use App\Models\Language;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
@@ -31,9 +32,9 @@ class PostController extends Controller
             ->with('posts', $posts);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        $post = Post::create([
+        Post::create([
             'language_id' => $request->input('language_id'),
             'category_id' => $request->input('category_id'),
             'image' => $request->file('image'),
@@ -41,18 +42,32 @@ class PostController extends Controller
             'slug' => $request->input('title'),
             'description' => $request->input('description'),
         ]);
-        $this->gallery->store($request, $post);
         return back()->with('success', 'Данные успешно добавлены');
     }
 
     public function show(Post $post)
     {
-        dd($post->galleries()->get());
+        $languages = Language::all();
+        $categories = Category::where('language_id', $post->language_id)->get();
+        return view('admin.posts.show')
+            ->with('post', $post)
+            ->with('languages', $languages)
+            ->with('categories', $categories);
     }
 
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Post $post): RedirectResponse
     {
-        //
+        if ($request->has('image')){
+            $post->update(['image' => $request->file('image')]);
+        }
+        $post->update([
+            'language_id' => $request->input('language_id'),
+            'category_id' => $request->input('category_id'),
+            'title' => $request->input('title'),
+            'slug' => $request->input('title'),
+            'description' => $request->input('description'),
+        ]);
+        return redirect()->route('admin.posts.index')->with('success', 'Данные успешно обновлены');
     }
 
     public function destroy(Post $post): RedirectResponse

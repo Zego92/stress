@@ -11,7 +11,7 @@ class CreateMainHeadersTable extends Migration
         Schema::create('main_headers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('language_id');
-            $table->text('brandLogoImage');
+            $table->text('brandLogoImage')->nullable();
             $table->text('brandLogoImageLink')->default('home');
             $table->string('homeTitle');
             $table->string('homeLink')->default('home');

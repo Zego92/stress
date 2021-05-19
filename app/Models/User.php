@@ -37,9 +37,9 @@ class User extends Authenticatable
     public function setUsernameAttribute($value)
     {
         if (empty($value)){
-            $this->attributes['nickname'] = $this->name;
+            $this->attributes['username'] = $this->name;
         }else{
-            $this->attributes['nickname'] = $value;
+            $this->attributes['username'] = $value;
         }
     }
 }

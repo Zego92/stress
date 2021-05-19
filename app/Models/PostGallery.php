@@ -19,6 +19,6 @@ class PostGallery extends Model
 
     public function post(): BelongsTo
     {
-        return $this->belongsTo(Post::class, 'post_id', 'id');
+        return $this->belongsTo(Post::class);
     }
 }

@@ -25,9 +25,9 @@ class Category extends Model
         'image',
     ];
 
-    public function setSlugAttribute(): string
+    public function setSlugAttribute($value): string
     {
-        return $this->attributes['slug'] = Str::slug($this->name);
+        return $this->attributes['slug'] = Str::slug($value);
     }
 
     public function language(): BelongsTo
