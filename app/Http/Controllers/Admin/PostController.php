@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PostStoreRequest;
 use App\Models\Category;
 use App\Models\Language;
 use App\Models\Post;
@@ -13,14 +14,6 @@ use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
-
-    private $gallery;
-
-    public function __construct(PostGalleryController $gallery)
-    {
-        $this->gallery = $gallery;
-    }
-
     public function index()
     {
         $languages = Language::all();
@@ -32,16 +25,11 @@ class PostController extends Controller
             ->with('posts', $posts);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(PostStoreRequest $request): RedirectResponse
     {
-        Post::create([
-            'language_id' => $request->input('language_id'),
-            'category_id' => $request->input('category_id'),
-            'image' => $request->file('image'),
-            'title' => $request->input('title'),
-            'slug' => $request->input('title'),
-            'description' => $request->input('description'),
-        ]);
+        $data = $request->all();
+        $data['slug'] = $request->input('title');
+        Post::create($data);
         return back()->with('success', 'Данные успешно добавлены');
     }
 

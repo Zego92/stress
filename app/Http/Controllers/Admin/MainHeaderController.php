@@ -63,7 +63,6 @@ class MainHeaderController extends Controller
     public function destroy(MainHeader $header): RedirectResponse
     {
         try {
-            File::delete($header->brandLogoImage);
             $header->delete();
             return back()->with('success', 'Данные успешно удалены');
         }catch (\Exception $exception){

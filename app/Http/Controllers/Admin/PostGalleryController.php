@@ -33,7 +33,6 @@ class PostGalleryController extends Controller
     public function destroy(PostGallery $gallery)
     {
         try {
-            File::delete($gallery->image);
             $gallery->delete();
             return back()->with('success', 'Данные успешно удалены');
         }catch (\Exception $exception){
