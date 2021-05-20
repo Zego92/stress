@@ -1,0 +1,161 @@
+@import "./fonts";
+
+$textcolor: #000;
+$purple: #2A2A86;
+$system: -apple-system, BlinkMacSystemFont, Arial, sans-serif; // System Font Family
+$mainfont: "Roboto", sans-serif;
+$fonttwo: "FranklinGothicBook", sans-serif;
+
+
+* {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    outline: none;
+}
+
+select {
+    appearance: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+input, button, select {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+::placeholder {
+    color: #B3B3B3;
+}
+
+input, textarea {
+    outline: none;
+    &:focus:required:invalid {
+        border-color: red;
+    }
+    &:required:valid {
+        border-color: green;
+    }
+}
+
+input, button, select, textarea {
+    font-family: $mainfont;
+}
+
+svg {
+    path,
+    polygon {
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+body {
+    font-family: $mainfont;
+    font-size: 15px;
+    min-width: 320px;
+    font-weight: 400;
+    position: relative;
+    line-height: 1.22;
+    overflow-x: hidden;
+    color: $textcolor;
+    background-color: #fff;
+    margin: 0;
+    &.select-country-open {
+        @media only screen and (max-width: 767px) {
+            overflow: hidden;
+            position: fixed;
+        }
+    }
+    &.menu-is-open {
+        overflow: hidden;
+        position: fixed;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    transition: 0.3s;
+    color: $purple;
+}
+
+ul  {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 54 / 40 * 100%;
+}
+
+h2 {
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 44 / 36 * 100%;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36 / 30 * 100%;
+}
+
+h4 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29 / 24 * 100%;
+}
+
+h5 {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22 / 18 * 100%;
+}
+
+h6 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19 / 16 * 100%;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+}
+
+p {
+    margin: 0 0 15px 0;
+}
+
+.container {
+    max-width: 1688px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 19px;
+    @media only screen and (max-width: 1660px) {
+        max-width: 1148px;
+    }
+    @media only screen and (max-width: 767px) {
+        padding: 0 13px;
+    }
+    &.post-container {
+        max-width: 1408px;
+        @media only screen and (max-width: 1660px) {
+            max-width: 1148px;
+        }
+
+        @media only screen and (max-width: 767px) {
+            padding: 0 13px;
+        }
+    }
+}
+
+

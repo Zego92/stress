@@ -158,7 +158,6 @@
                     @csrf
                     <div class="modal-body">
                         <input type="hidden" name="post_id" value="{{ $post->id }}">
-
                         <div class="form-group">
                             <input type="hidden" name="postGalleries" id="postGalleries" value="" multiple>
                             <div class="row">
@@ -219,5 +218,5 @@
 @endsection
 
 @push('js')
-
+    <script src="{{ asset('js/dropZone.js') }}"></script>
 @endpush

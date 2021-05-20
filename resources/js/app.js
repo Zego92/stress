@@ -7,8 +7,8 @@ import './Admin/adminDeletePopups'
 import './Admin/adminCustomMethods'
 require('summernote/lang/summernote-ru-RU')
 require('dropzone')
-let files = []
-let filename = Math.random().toString(10);
+require('waypoints/lib/noframework.waypoints.min');
+require('./main')
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
@@ -46,65 +46,8 @@ jQuery(document).ready(function () {
 
 
 
-    // DropzoneJS Demo Code Start
-    Dropzone.autoDiscover = false
-
-// Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-    let previewNode = document.querySelector("#template")
-    previewNode.id = ""
-    let previewTemplate = previewNode.parentNode.innerHTML
-    previewNode.parentNode.removeChild(previewNode)
-
-    let myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-        url: "/target-url", // Set the url
-        thumbnailWidth: 80,
-        thumbnailHeight: 80,
-        parallelUploads: 20,
-        previewTemplate: previewTemplate,
-        autoQueue: false, // Make sure the files aren't queued until manually added
-        previewsContainer: "#previews", // Define the container to display the previews
-        clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
-    })
-
-    myDropzone.on("addedfile", function(file) {
-
-    })
-    myDropzone.on('removedfile', function (file) {
-        let index = files.indexOf(file.dataURL)
-        if (index > -1){
-            files.splice(index, 1)
-            // putImagesToSession(files)
-        }
-    })
-    myDropzone.on('thumbnail', function (file) {
-        files.push(file.dataURL)
-        // putImagesToSession(files)
-    })
-
-    myDropzone.on("queuecomplete", function(progress) {
-    })
-
-    jQuery('.addNewPost').click(function (event) {
-        event.preventDefault()
-        putImagesToSession(files)
-        jQuery('.addNewPostForm').submit();
-    })
 
 })
 
-function putImagesToSession(images = []) {
-    $.ajax({
-        url: '/admin/post-gallery',
-        method: 'POST',
-        data: {
-            images: images
-        },
-        success: function (response) {
-            console.log(response)
-        },
-        error: function (error) {
-            console.log(error)
-        }
-    })
-}
+
 

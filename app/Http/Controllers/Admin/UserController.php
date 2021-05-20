@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UserStoreRequest;
+use App\Http\Requests\Admin\UserUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,7 +19,7 @@ class UserController extends Controller
             ->with('users', $users);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(UserStoreRequest $request): RedirectResponse
     {
         User::create($request->all());
         return back()->with('success', 'Данные успешно добавлены');
@@ -29,19 +31,26 @@ class UserController extends Controller
             ->with('user', $user);
     }
 
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user): RedirectResponse
     {
-        $user->update([
-            'fio' => $request->input('fio'),
-            'username' => $request->input('username'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
-            'password' => Hash::make($request->input('password')),
-        ]);
+//        $user->update([
+//            'fio' => $request->input('fio'),
+//            'username' => $request->input('username'),
+//            'email' => $request->input('email'),
+//            'phone' => $request->input('phone'),
+//            'password' => Hash::make($request->input('password')),
+//        ]);
+        $user->update($request->all());
+        return redirect()->route('admin.users.index')->with('success', 'Данные успешно обновлены');
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user): RedirectResponse
     {
-        //
+        try {
+            $user->delete();
+            return back()->with('success', 'Данные успешно удалены');
+        }catch (\Exception $exception){
+            return back()->with('error', $exception->getMessage());
+        }
     }
 }
