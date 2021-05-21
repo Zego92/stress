@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\MainHeaderController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\PostGalleryController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\LanguageHomeController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -33,7 +35,17 @@ use App\Http\Controllers\Admin\HomeController as AdminController;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::view('/', 'welcome')->name('home');
+Route::as('user.')->group(function (){
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/{language:code}/home', [LanguageHomeController::class, 'index'])->name('language.home');
+    Route::get('/{language:code}/category/{category:slug}', [\App\Http\Controllers\CategoryController::class, 'show'])->name('category');
+    Route::get('/{language:code}/category/{category:slug}/projects/{post:slug}', [ProjectController::class, 'show'])->name('post.show');
+    Route::get('/{language:code}/projects', [ProjectController::class, 'index'])->name('our-projects');
+    Route::get('/{language:code}/contacts', [\App\Http\Controllers\ContactController::class, 'show'])->name('contacts');
+    Route::get('/{language:code}/feedback', [\App\Http\Controllers\FeedbackController::class, 'show'])->name('feedback');
+    Route::post('/feedback', [\App\Http\Controllers\FeedbackController::class, 'store'])->name('feedback.store');
+});
+
 
 Auth::routes();
 

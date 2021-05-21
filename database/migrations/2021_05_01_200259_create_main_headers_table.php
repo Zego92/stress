@@ -12,15 +12,15 @@ class CreateMainHeadersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('language_id');
             $table->text('brandLogoImage')->nullable();
-            $table->text('brandLogoImageLink')->default('home');
+            $table->text('brandLogoImageLink')->default('user.home');
             $table->string('homeTitle');
-            $table->string('homeLink')->default('home');
+            $table->string('homeLink')->default('user.home');
             $table->string('ourProjectsTitle');
-            $table->string('ourProjectsLink')->default('our-Project');
+            $table->string('ourProjectsLink')->default('user.our-projects');
             $table->string('contactTitle');
-            $table->string('contactLink')->default('contacts');
+            $table->string('contactLink')->default('user.contacts');
             $table->string('feedbackTitle');
-            $table->string('feedbackLink')->default('feedback');
+            $table->string('feedbackLink')->default('user.feedback');
             $table->timestamps();
             $table->foreign('language_id')
                 ->references('id')

@@ -31,10 +31,10 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Логотип</th>
-                                        <th>Главная <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
-                                        <th>Наши Работы <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
-                                        <th>Контакты <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
-                                        <th>Калькулятор <a href="{{ route('home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
+                                        <th>Главная <a href="{{ route('user.home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
+                                        <th>Наши Работы <a href="{{ route('user.home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
+                                        <th>Контакты <a href="{{ route('user.home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
+                                        <th>Калькулятор <a href="{{ route('user.home') }}" target="_blank"><i class="fas fa-link"></i></a></th>
                                         <th>Язык</th>
                                         <th></th>
                                     </tr>

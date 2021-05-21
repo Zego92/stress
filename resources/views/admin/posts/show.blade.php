@@ -16,7 +16,6 @@
                             <h3 class="card-title">Информация</h3>
                         </div>
                         <form action="{{ route('admin.posts.update', $post) }}" method="post" enctype="multipart/form-data">
-
                             @csrf
                             @method('PUT')
                             <div class="card-body">
@@ -93,7 +92,7 @@
                                         </a>
                                     </div>
                                     <div class="col-md-6">
-                                        <button type="submit" class="btn btn-outline-success btn-block addNewPost">Обновить</button>
+                                        <button type="submit" class="btn btn-outline-success btn-block">Обновить</button>
                                     </div>
                                 </div>
                             </div>

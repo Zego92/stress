@@ -166,5 +166,6 @@ return [
         'ourProjectsTitle' => 'Заголовок "Наши Проекты"',
         'contactTitle' => 'Заголовок "Контакты"',
         'feedbackTitle' => 'Заголовок "Просчитать"',
+        'fio' => 'ФИО',
     ],
 ];

@@ -19,12 +19,13 @@ class PostGalleryController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $images = Session::get('images');
-        foreach ($images as $key => $value){
+        foreach ($images as $value){
             foreach ($value as $item){
                 $gallery = new PostGallery();
                 $gallery->post_id = $request->post_id;
                 $gallery->image = $item;
                 $gallery->save();
+                Session::forget('images');
             }
 
         }

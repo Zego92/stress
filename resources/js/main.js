@@ -1,6 +1,17 @@
 // import smoothscroll from '../../node_modules/smoothscroll-polyfill/dist/smoothscroll.min';
+window.$ = window.jquery = window.jQuery = require('jquery')
+require('jquery-mask-plugin/dist/jquery.mask.min')
 import smoothscroll from 'smoothscroll-polyfill';
+require('./bootstrap');
 smoothscroll.polyfill();
+import lightbox from 'lightbox2/dist/js/lightbox.min'
+lightbox.option({
+    'resizeDuration': 200,
+    'wrapAround': true
+})
+jQuery(document).ready(function () {
+    jQuery('.user-feedback-phone').mask('+380000000000')
+})
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -116,11 +127,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
 
-        for (let i = 0; i < selectInput.length; i++) {
-            if (!selectInput[i].contains(target) && !selectInput[i].nextElementSibling.contains(target)) {
-                selectInput[i].parentElement.classList.remove('active');
-            }
-        }
+        // for (let i = 0; i < selectInput.length; i++) {
+        //     if (!selectInput[i].contains(target) && !selectInput[i].nextElementSibling.contains(target)) {
+        //         selectInput[i].parentElement.classList.remove('active');
+        //     }
+        // }
 
         for (let i = 0; i < subItem.length; i++) {
             if (!subItem[i].contains(target)) {
@@ -137,17 +148,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 parentItem.classList.remove('active');
             } else {
                 parentItem.classList.add('active');
-            }
-        });
-    }
-
-    for (let i = 0; i < selectInput.length; i++) {
-        selectInput[i].addEventListener('click', function () {
-            const currentSelect = selectInput[i].parentElement;
-            if (currentSelect.classList.contains('active')) {
-                currentSelect.classList.remove('active');
-            } else {
-                currentSelect.classList.add('active');
             }
         });
     }

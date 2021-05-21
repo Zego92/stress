@@ -41,4 +41,14 @@ class Language extends Model
     {
         return $this->hasOne(FeedbackPage::class);
     }
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function contact(): HasOne
+    {
+        return $this->hasOne(Contact::class);
+    }
 }

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -108,7 +108,7 @@ eval("window.jQuery = __webpack_require__(/*! jquery */ \"./node_modules/jquery/
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!**********************************************!*\
   !*** multi ./resources/js/Admin/dropZone.js ***!
   \**********************************************/
