@@ -24,11 +24,9 @@ class BannerController extends Controller
 
     public function store(BannerStoreRequest $request): RedirectResponse
     {
-        Banner::create([
-            'language_id' => $request->language_id,
-            'image' => $request->file('image'),
-            'title' => $request->title,
-        ]);
+        $data = $request->all();
+        $data['image'] = $request->file('image');
+        Banner::create($data);
         return back()->with('success', 'Данные успешно добавлены');
     }
 

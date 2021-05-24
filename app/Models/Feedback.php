@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Notifications\Notifiable;
 
 class Feedback extends Model
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $table = 'feedback';
 
@@ -29,7 +30,7 @@ class Feedback extends Model
 
     public function getStatusAttribute(): string
     {
-        switch ($this->status){
+        switch ($this->attributes['status']){
             case 1:
                 return 'Получен';
                 break;

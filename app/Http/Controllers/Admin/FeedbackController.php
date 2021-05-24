@@ -14,7 +14,7 @@ class FeedbackController extends Controller
 {
     public function index()
     {
-        $feedbacks = Feedback::with('language')->paginate(10);
+        $feedbacks = Feedback::paginate(10);
         return view('admin.feedback.index')
             ->with('feedbacks', $feedbacks);
     }
@@ -27,15 +27,8 @@ class FeedbackController extends Controller
 
     public function update(FeedbackUpdateRequest $request, Feedback $feedback): RedirectResponse
     {
-        $feedback->update([
-            'user_id' => $request->user_id,
-            'fio' => $request->fio,
-            'email' => $request->email,
-            'status' => $request->status,
-            'phone' => $request->phone,
-            'title' => $request->title,
-            'description' => $request->description,
-        ]);
+        $data = $request->all();
+        $feedback->update($data);
         return redirect()->route('admin.feedbacks.index')->with('success', 'Данные успешно обновлены');
     }
 

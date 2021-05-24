@@ -55,9 +55,9 @@
                                 <div class="form-group">
                                     <label for="status">Статус</label>
                                     <select title="" class="form-control @error('status') is-invalid @enderror" name="status">
-                                        <option value="1" @if($feedback->status == 1) selected @endif>{{ $feedback->status == 1 ?? 'Получен' }}</option>
-                                        <option value="2" @if($feedback->status == 2) selected @endif>{{ $feedback->status == 2 ?? 'В обработке' }}</option>
-                                        <option value="3" @if($feedback->status == 3) selected @endif>{{ $feedback->status == 3 ?? 'Обработан' }}</option>
+                                        <option value="1" @if($feedback->status == 'Получен') selected @endif>Получен</option>
+                                        <option value="2" @if($feedback->status == 'Обрабатывается') selected @endif>Обрабатывается</option>
+                                        <option value="3" @if($feedback->status == 'Обратотан') selected @endif>Обратотан</option>
                                     </select>
                                     @error('language_id')
                                     <span class="invalid-feedback" role="alert">

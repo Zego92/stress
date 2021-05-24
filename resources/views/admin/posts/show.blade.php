@@ -218,4 +218,12 @@
 
 @push('js')
     <script src="{{ asset('js/dropZone.js') }}"></script>
+    <script>
+        toastr.options.closeButton = true;
+        @if(session('success'))
+        toastr.success( "{{session()->get('success')}}", {timeOut: 2000})
+        @elseif(session('error'))
+        toastr.error( "{{session()->get('error')}}", {timeOut: 2000})
+        @endif
+    </script>
 @endpush

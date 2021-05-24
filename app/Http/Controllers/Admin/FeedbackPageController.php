@@ -24,20 +24,8 @@ class FeedbackPageController extends Controller
 
     public function store(FeedbackPageStoreRequest $request): RedirectResponse
     {
-        FeedbackPage::create([
-            'language_id' => $request->language_id,
-            'headerTitle' => $request->headerTitle,
-            'fioTitle' => $request->fioTitle,
-            'fioPlaceholderTitle' => $request->fioPlaceholderTitle,
-            'emailTitle' => $request->emailTitle,
-            'emailPlaceholderTitle' => $request->emailPlaceholderTitle,
-            'phoneTitle' => $request->phoneTitle,
-            'phonePlaceholderTitle' => $request->phonePlaceholderTitle,
-            'messageTitle' => $request->messageTitle,
-            'messagePlaceholderTitle' => $request->messagePlaceholderTitle,
-            'messageDescriptionTitle' => $request->messageDescriptionTitle,
-            'messageDescriptionPlaceholderTitle' => $request->messageDescriptionPlaceholderTitle,
-        ]);
+        $data = $request->all();
+        FeedbackPage::create($data);
         return back()->with('success', 'Данные успешно добавлены');
     }
 
@@ -51,20 +39,8 @@ class FeedbackPageController extends Controller
 
     public function update(FeedbackUpdateRequest $request, FeedbackPage $page_feedback): RedirectResponse
     {
-        $page_feedback->update([
-            'language_id' => $request->language_id,
-            'headerTitle' => $request->headerTitle,
-            'fioTitle' => $request->fioTitle,
-            'fioPlaceholderTitle' => $request->fioPlaceholderTitle,
-            'emailTitle' => $request->emailTitle,
-            'emailPlaceholderTitle' => $request->emailPlaceholderTitle,
-            'phoneTitle' => $request->phoneTitle,
-            'phonePlaceholderTitle' => $request->phonePlaceholderTitle,
-            'messageTitle' => $request->messageTitle,
-            'messagePlaceholderTitle' => $request->messagePlaceholderTitle,
-            'messageDescriptionTitle' => $request->messageDescriptionTitle,
-            'messageDescriptionPlaceholderTitle' => $request->messageDescriptionPlaceholderTitle,
-        ]);
+        $data = $request->all();
+        $page_feedback->update($data);
         return redirect()->route('admin.page-feedback.index')->with('success', 'Данные успешно Обновлены');
     }
 

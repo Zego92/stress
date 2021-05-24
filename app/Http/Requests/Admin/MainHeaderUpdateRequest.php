@@ -14,12 +14,12 @@ class MainHeaderUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'language_id' => 'nullable|sometimes|string|max:50',
-            'brandLogoImage' => 'nullable|sometimes|',
-            'homeTitle' => 'nullable|sometimes|string|max:50',
-            'ourProjectsTitle' => 'nullable|sometimes|string|max:50',
-            'contactTitle' => 'nullable|sometimes|string|max:50',
-            'feedbackTitle' => 'nullable|sometimes|string|max:50',
+            'language_id' => 'sometimes|string|max:50',
+            'brandLogoImage' => 'sometimes|mimes:png,jpeg,jpg',
+            'homeTitle' => 'sometimes|string|max:50',
+            'ourProjectsTitle' => 'sometimes|string|max:50',
+            'contactTitle' => 'sometimes|string|max:50',
+            'feedbackTitle' => 'sometimes|string|max:50',
         ];
     }
 }

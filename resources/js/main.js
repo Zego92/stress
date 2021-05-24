@@ -2,7 +2,6 @@
 window.$ = window.jquery = window.jQuery = require('jquery')
 require('jquery-mask-plugin/dist/jquery.mask.min')
 import smoothscroll from 'smoothscroll-polyfill';
-require('./bootstrap');
 smoothscroll.polyfill();
 import lightbox from 'lightbox2/dist/js/lightbox.min'
 lightbox.option({

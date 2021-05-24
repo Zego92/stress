@@ -31,6 +31,15 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+    toastr.options.closeButton = true;
+    @if(session('success'))
+    toastr.success( "{{session()->get('success')}}", {timeOut: 2000})
+    @elseif(session('error'))
+    toastr.error( "{{session()->get('error')}}", {timeOut: 2000})
+    @endif
+</script>
 @stack('js')
 </body>
 </html>

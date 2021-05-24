@@ -28,6 +28,6 @@ class FeedbackController extends Controller
         $user = User::create($data);
         $data['user_id'] = $user->id;
         Feedback::create($data);
-        return back()->with('success', 'Спасибо за ваше доверие. Наш менеджер свяжется с вами в ближайшее время');
+        return back()->with('success', 'Наш менеджер свяжется с вами в ближайшее время');
     }
 }

@@ -84,6 +84,9 @@ a {
     transition: 0.3s;
     color: $purple;
 }
+a:hover{
+    text-decoration: none !important;
+}
 
 ul  {
     margin: 0;

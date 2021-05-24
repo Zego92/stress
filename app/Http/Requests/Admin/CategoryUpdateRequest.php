@@ -15,6 +15,7 @@ class CategoryUpdateRequest extends FormRequest
     {
         return [
             'name' => 'string|max:50',
+            'image' => 'mimes:png,jpeg,jpg'
         ];
     }
 }

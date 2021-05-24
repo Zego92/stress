@@ -26,12 +26,10 @@ class CategoryController extends Controller
 
     public function store(CategoryStoreRequest $request): RedirectResponse
     {
-        Category::create([
-            'language_id' => $request->input('category_id'),
-            'name' => $request->input('name'),
-            'slug' => $request->input('name'),
-            'image' => $request->file('image')
-        ]);
+        $data = $request->all();
+        $data['image'] = $request->file('image');
+        $data['slug'] = $request->input('name');
+        Category::create($data);
         return back()->with('success', 'Данные успешно добавлены');
     }
 

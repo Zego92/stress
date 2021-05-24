@@ -16,7 +16,7 @@ class CategoryStoreRequest extends FormRequest
         return [
             'language_id' => 'required',
             'name' => 'required|string|max:50',
-            'image' => 'required',
+            'image' => 'required|mimes:png,jpeg,jpg',
         ];
     }
 }

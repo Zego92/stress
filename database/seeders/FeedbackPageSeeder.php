@@ -23,6 +23,7 @@ class FeedbackPageSeeder extends Seeder
             'messagePlaceholderTitle' => 'Например ремонт квартиры',
             'messageDescriptionTitle' => 'Краткое описание',
             'messageDescriptionPlaceholderTitle' => 'Краткое описание',
+            'submitButtonTitle' => 'Отправить',
         ]);
         FeedbackPage::create([
             'language_id' => Language::where('code', '=', 'en')->first()->id,
@@ -37,6 +38,7 @@ class FeedbackPageSeeder extends Seeder
             'messagePlaceholderTitle' => 'For example apartment renovation',
             'messageDescriptionTitle' => 'Short description',
             'messageDescriptionPlaceholderTitle' => 'Short description',
+            'submitButtonTitle' => 'Send',
         ]);
         FeedbackPage::create([
             'language_id' => Language::where('code', '=', 'ua')->first()->id,
@@ -51,6 +53,7 @@ class FeedbackPageSeeder extends Seeder
             'messagePlaceholderTitle' => 'Наприклад, ремонт квартири',
             'messageDescriptionTitle' => 'Короткий опис',
             'messageDescriptionPlaceholderTitle' => 'Короткий опис',
+            'submitButtonTitle' => 'Надіслати',
         ]);
     }
 }
