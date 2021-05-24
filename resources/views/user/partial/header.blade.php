@@ -1,7 +1,9 @@
 <header class="header header-info">
     <div class="container">
         <div class="header__left">
-            <a href="{{ route('user.home') }}" class="site-logo desktop"><img height="110px" src="{{ asset($language->mainHeader->brandLogoImage) }}" alt="{{ $language->mainHeader->brandLogoImage }}"></a>
+            <a href="{{ route('user.home') }}" class="site-logo desktop">
+                <img height="110px" src="{{ asset($language->mainHeader->brandLogoImage) }}" alt="{{ $language->mainHeader->brandLogoImage }}">
+            </a>
             <a href="#" class="site-logo mobile"><img src="{{ asset('img/site-logo-mob.svg') }}" alt=""></a>
         </div>
         <div class="header__right">

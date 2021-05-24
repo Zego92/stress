@@ -26,7 +26,6 @@
                                         <th>Телефон</th>
                                         <th>Тема</th>
                                         <th>Статус</th>
-                                        <th>Язык</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -38,8 +37,8 @@
                                             <td>{{ $feedback->email }}</td>
                                             <td>{{ $feedback->phone }}</td>
                                             <td>{{ $feedback->title }}</td>
-                                            <td>@if($feedback->status == 1) Получен @elseif($feedback->status == 2) В обработке @elseif($feedback->status == 3) Обработан @endif</td>
-                                            <td>{{ $feedback->language->code }}</td>
+                                            <td>{{ $feedback->status }}</td>
+{{--                                            <td>@if($feedback->status == 1) Получен @elseif($feedback->status == 2) В обработке @elseif($feedback->status == 3) Обработан @endif</td>--}}
                                             <td>
                                                 <div class="btn-toolbar" role="toolbar"
                                                      aria-label="Toolbar with button groups">

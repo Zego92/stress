@@ -38,7 +38,7 @@
                                 <div class="custom-file">
                                     <input type="file" accept="image/*" name="image" class="custom-file-input
                                                 @error('image') is-invalid @enderror" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Допускаются расширения .png .jpeg .jpeg .svg</label>
+                                    <label class="custom-file-label" for="customFile">{{ $banner->image }}</label>
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

@@ -14,7 +14,7 @@ class FeedbackPageUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'language_id' => 'unique:feedback_pages',
+            'language_id' => 'unique:feedback_pages,language_id,' . $this->feedback->id,
             'headerTitle' => 'string|max:100',
             'fioTitle' => 'string|max:100',
             'fioPlaceholderTitle' => 'string|max:100',

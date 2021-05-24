@@ -23,17 +23,8 @@ class ContactController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        Contact::create([
-            'language_id' => $request->language_id,
-            'firstPhone' => $request->firstPhone,
-            'secondPhone' => $request->secondPhone,
-            'thirdPhone' => $request->thirdPhone,
-            'address' => $request->address,
-            'startTimeWork' => $request->startTimeWork,
-            'endTimeWork' => $request->endTimeWork,
-            'email' => $request->email,
-            'gMapLink' => $request->gMapLink,
-        ]);
+        $data = $request->all();
+        Contact::create($data);
         return back()->with('success', 'Данные успешно добавлены');
     }
 
@@ -47,17 +38,8 @@ class ContactController extends Controller
 
     public function update(ContactUpdateRequest $request, Contact $contact): RedirectResponse
     {
-        $contact->update([
-            'language_id' => $request->language_id,
-            'firstPhone' => $request->firstPhone,
-            'secondPhone' => $request->secondPhone,
-            'thirdPhone' => $request->thirdPhone,
-            'address' => $request->address,
-            'startTimeWork' => $request->startTimeWork,
-            'endTimeWork' => $request->endTimeWork,
-            'email' => $request->email,
-            'gMapLink' => $request->gMapLink,
-        ]);
+        $data = $request->all();
+        $contact->update($data);
         return redirect()->route('admin.contacts.index')->with('success', 'Данные успешно обновлены');
     }
 

@@ -14,7 +14,9 @@ class BannerUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'language_id' => 'sometimes|unique:banners,language_id, ' . $this->banner->id,
             'title' => 'string|max:100',
+            'image' => 'mimes:png,jpeg,jpg'
         ];
     }
 }

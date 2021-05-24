@@ -115,7 +115,7 @@ eval("window.jQuery = __webpack_require__(/*! jquery */ \"./node_modules/jquery/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! g:\Web\OpenServer\domains\stress\resources\js\Admin\dropZone.js */"./resources/js/Admin/dropZone.js");
+module.exports = __webpack_require__(/*! /Users/evgeniytimchenco/Documents/web/stress/resources/js/Admin/dropZone.js */"./resources/js/Admin/dropZone.js");
 
 
 /***/ })

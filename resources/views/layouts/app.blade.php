@@ -9,6 +9,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     @stack('css')
 </head>
 <body>
@@ -22,7 +23,18 @@
     <script src="https://unpkg.com/element-closest"></script>
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        toastr.options.closeButton = true;
+        @if(session('success'))
+        toastr.success( "{{session()->get('success')}}", {timeOut: 2000})
+        @elseif(session('error'))
+        toastr.error( "{{session()->get('error')}}", {timeOut: 2000})
+        @endif
+    </script>
     <script src="{{ asset('js/main.js') }}"></script>
+
     @stack('js')
 </body>
 </html>

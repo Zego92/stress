@@ -33,13 +33,6 @@ class UserController extends Controller
 
     public function update(UserUpdateRequest $request, User $user): RedirectResponse
     {
-//        $user->update([
-//            'fio' => $request->input('fio'),
-//            'username' => $request->input('username'),
-//            'email' => $request->input('email'),
-//            'phone' => $request->input('phone'),
-//            'password' => Hash::make($request->input('password')),
-//        ]);
         $user->update($request->all());
         return redirect()->route('admin.users.index')->with('success', 'Данные успешно обновлены');
     }

@@ -16,9 +16,9 @@ class PostStoreRequest extends FormRequest
         return [
             'language_id' => 'required',
             'category_id' => 'required',
-            'image' => 'required',
-            'title' => 'required',
-            'description' => 'required',
+            'image' => 'required|mimes:png,jpeg,jpg',
+            'title' => 'required|string|max:100',
+            'description' => 'required|string',
         ];
     }
 }

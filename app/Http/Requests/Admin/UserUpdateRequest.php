@@ -17,7 +17,6 @@ class UserUpdateRequest extends FormRequest
         return [
             'email' => 'sometimes|unique:users,email,' . $this->user->id,
             'phone' => 'sometimes|unique:users,phone,' . $this->user->id,
-//            'email' => ['required', Rule::unique('users')->ignore($this->user->id),],
         ];
     }
 }

@@ -24,12 +24,8 @@ class FooterController extends Controller
 
     public function store(FooterStoreRequest $request): RedirectResponse
     {
-        Footer::create([
-            'language_id' => $request->language_id,
-            'contactTitle' => $request->contactTitle,
-            'email' => $request->email,
-            'phone' => $request->phone,
-        ]);
+        $data = $request->all();
+        Footer::create($data);
         return redirect()->back()->with('success', 'Данные успешно добавлены');
     }
 
@@ -43,12 +39,8 @@ class FooterController extends Controller
 
     public function update(FooterUpdateRequest $request, Footer $footer): RedirectResponse
     {
-        $footer->update([
-            'language_id' => $request->language_id,
-            'contactTitle' => $request->contactTitle,
-            'email' => $request->email,
-            'phone' => $request->phone,
-        ]);
+        $data = $request->all();
+        $footer->update($data);
         return redirect()->route('admin.footer.index')->with('success', 'Данные успешно обновлены');
     }
 

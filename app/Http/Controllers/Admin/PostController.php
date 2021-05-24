@@ -45,16 +45,11 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post): RedirectResponse
     {
+        $data = $request->all();
         if ($request->has('image')){
             $post->update(['image' => $request->file('image')]);
         }
-        $post->update([
-            'language_id' => $request->input('language_id'),
-            'category_id' => $request->input('category_id'),
-            'title' => $request->input('title'),
-            'slug' => $request->input('title'),
-            'description' => $request->input('description'),
-        ]);
+        $post->update($data);
         return redirect()->route('admin.posts.index')->with('success', 'Данные успешно обновлены');
     }
 

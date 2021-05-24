@@ -14,7 +14,9 @@ class PostUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'image' => 'mimes:png,jpeg,jpg',
+            'title' => 'string|max:100',
+            'description' => 'string',
         ];
     }
 }
