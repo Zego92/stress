@@ -28,6 +28,7 @@ class FeedbackNotification extends Notification
     {
         info($notifiable);
         return (new MailMessage)
+            ->subject('Заявка на расчет')
             ->level('success')
             ->greeting("Здравствуйте " . ' ' .  $this->feedback->fio)
             ->line('Ваша заявка получена!')

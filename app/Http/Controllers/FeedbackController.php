@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\FeedbackTelegramNotificationEvent;
 use App\Http\Requests\User\FeedbackStoreRequest;
 use App\Models\Feedback;
 use App\Models\Language;
@@ -22,12 +23,19 @@ class FeedbackController extends Controller
 
     public function store(FeedbackStoreRequest $request): RedirectResponse
     {
+        $user = User::where('email', $request->input('email'))->first();
         $data = $request->all();
-        $data['username'] = $request->input('fio');
-        $data['password'] = Str::random(8);
-        $user = User::create($data);
-        $data['user_id'] = $user->id;
-        Feedback::create($data);
-        return back()->with('success', 'Наш менеджер свяжется с вами в ближайшее время');
+        if (isset($user)){
+            $data['user_id'] = $user->id;
+            Feedback::create($data);
+            return back()->with('success', 'Наш менеджер свяжется с вами в ближайшее время');
+        }else{
+            $data['username'] = $request->input('fio');
+            $data['password'] = Str::random(8);
+            $user = User::create($data);
+            $data['user_id'] = $user->id;
+            Feedback::create($data);
+            return back()->with('success', 'Наш менеджер свяжется с вами в ближайшее время');
+        }
     }
 }
